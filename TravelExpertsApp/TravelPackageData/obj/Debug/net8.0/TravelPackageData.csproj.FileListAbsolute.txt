@@ -1,0 +1,14 @@
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\bin\Debug\net8.0\TravelPackageData.deps.json
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\bin\Debug\net8.0\TravelPackageData.runtimeconfig.json
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\bin\Debug\net8.0\TravelPackageData.dll
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\bin\Debug\net8.0\TravelPackageData.pdb
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\TravelPackageData.csproj.AssemblyReference.cache
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\TravelPackageData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\TravelPackageData.AssemblyInfoInputs.cache
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\TravelPackageData.AssemblyInfo.cs
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\TravelPackageData.csproj.CoreCompileInputs.cache
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\TravelPackageData.dll
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\refint\TravelPackageData.dll
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\TravelPackageData.pdb
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\TravelPackageData.genruntimeconfig.cache
+C:\Users\fujin\source\repos\ThreadedWorkshop4\TravelPackageData\obj\Debug\net8.0\ref\TravelPackageData.dll

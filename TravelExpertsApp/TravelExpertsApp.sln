@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExpertsForm", "TravelExpertsForm\TravelExpertsForm.csproj", "{228518BC-B888-4F19-8793-7640DB045DC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelExpertsForm", "TravelExpertsForm\TravelExpertsForm.csproj", "{228518BC-B888-4F19-8793-7640DB045DC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExpertsSuppliersDB", "TravelExpertsSuppliersDB\TravelExpertsSuppliersDB.csproj", "{FC5F555A-D248-4591-B750-85F755EB04AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelExpertsSuppliersDB", "TravelExpertsSuppliersDB\TravelExpertsSuppliersDB.csproj", "{FC5F555A-D248-4591-B750-85F755EB04AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelPackageData", "TravelPackageData\TravelPackageData.csproj", "{AD11135E-AF94-45DC-8718-ADD098B8D134}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelPackageGUI", "ThreadedWorkshop4\TravelPackageGUI.csproj", "{B1F51518-8A4E-4E37-946E-25AE6B48AF06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{FC5F555A-D248-4591-B750-85F755EB04AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC5F555A-D248-4591-B750-85F755EB04AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC5F555A-D248-4591-B750-85F755EB04AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD11135E-AF94-45DC-8718-ADD098B8D134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD11135E-AF94-45DC-8718-ADD098B8D134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD11135E-AF94-45DC-8718-ADD098B8D134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD11135E-AF94-45DC-8718-ADD098B8D134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1F51518-8A4E-4E37-946E-25AE6B48AF06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1F51518-8A4E-4E37-946E-25AE6B48AF06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1F51518-8A4E-4E37-946E-25AE6B48AF06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1F51518-8A4E-4E37-946E-25AE6B48AF06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
