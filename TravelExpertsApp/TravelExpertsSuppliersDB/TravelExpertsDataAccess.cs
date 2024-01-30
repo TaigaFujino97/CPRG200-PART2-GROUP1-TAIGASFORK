@@ -103,6 +103,29 @@ public class TravelExpertsDataAccess
         }
     }
 
+    public void AddProduct(Product product)
+    {
+        db.Products.Add(product);
+        db.SaveChanges();
+    }
+
+    public void EditProduct(String newName,int ID)
+    {
+        var query = (from prod in db.Products where prod.ProductId == ID select prod).ToList();
+        query[0].ProdName = newName;
+        db.SaveChanges();
+    }
+
+    public void DeleteProduct(int ID)
+    {
+        var query = db.Products.Where(x => x.ProductId == ID).Select(x => x).ToArray();
+        if (query.Length >= 1)
+        {
+            db.Products.Remove(query[0]);
+            db.SaveChanges();
+        }
+    }
+
     private DataAccessException CreateDataAccessException( // Returns a DataAccessException based on the type passed
         EntityState state)
     {
