@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>TravelExpertsForm.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ThreadedWorkshop4\TravelPackageGUI.csproj" />
     <ProjectReference Include="..\TravelExpertsSuppliersDB\TravelExpertsSuppliersDB.csproj" />
   </ItemGroup>
 
