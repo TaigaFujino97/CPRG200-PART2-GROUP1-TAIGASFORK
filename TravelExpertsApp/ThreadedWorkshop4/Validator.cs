@@ -233,7 +233,7 @@ namespace TravelPackageGUI
         {
             bool isValid = true; // innocent until proven guilty
             DateTime value; // the date time value provided in the text box
-            if(textBox != null && !string.IsNullOrEmpty(textBox.Text))
+            if(textBox != null && !string.IsNullOrEmpty(textBox.Text) && textBox.Text != "N/A")
             {
                 if (!DateTime.TryParse(textBox.Text, out value)) // if not a datetime value
                 {
@@ -278,7 +278,7 @@ namespace TravelPackageGUI
         public static bool IsValidEndDate(TextBox endDate, TextBox startDate)
         {
             bool isValid = true;
-            if (endDate != null && !string.IsNullOrEmpty(endDate.Text) && startDate != null && !string.IsNullOrEmpty(startDate.Text))
+            if (endDate != null && !string.IsNullOrEmpty(endDate.Text) && endDate.Text != "N/A" && startDate != null && !string.IsNullOrEmpty(startDate.Text) && startDate.Text != "N/A")
             {
                 if (Convert.ToDateTime(endDate.Text) < Convert.ToDateTime(startDate.Text))
                 {

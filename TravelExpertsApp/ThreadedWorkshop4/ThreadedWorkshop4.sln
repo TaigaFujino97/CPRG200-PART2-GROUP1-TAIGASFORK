@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelPackageGUI", "ThreadedWorkshop4\TravelPackageGUI.csproj", "{CFD41E60-BB13-456B-ADBB-257F8523448E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelPackageData", "TravelPackageData\TravelPackageData.csproj", "{580DBB6E-8171-47DC-9DBB-33C4938CF982}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFD41E60-BB13-456B-ADBB-257F8523448E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD41E60-BB13-456B-ADBB-257F8523448E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD41E60-BB13-456B-ADBB-257F8523448E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD41E60-BB13-456B-ADBB-257F8523448E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580DBB6E-8171-47DC-9DBB-33C4938CF982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580DBB6E-8171-47DC-9DBB-33C4938CF982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580DBB6E-8171-47DC-9DBB-33C4938CF982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580DBB6E-8171-47DC-9DBB-33C4938CF982}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A5E7B8B-91F5-4DFD-B147-EF57335CE55E}
+	EndGlobalSection
+EndGlobal

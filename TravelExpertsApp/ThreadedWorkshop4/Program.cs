@@ -1,4 +1,6 @@
-namespace ThreadedWorkshop4
+using ThreadedWorkshop4;
+
+namespace TravelPackageGUI
 {
     internal static class Program
     {
