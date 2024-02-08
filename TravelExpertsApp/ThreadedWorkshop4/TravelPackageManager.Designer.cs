@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             cboPackageName = new ComboBox();
             label1 = new Label();
             label2 = new Label();
@@ -46,10 +47,18 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             button1 = new Button();
+            dgvProducts = new DataGridView();
+            ProdSupID = new DataGridViewTextBoxColumn();
+            ProdID = new DataGridViewTextBoxColumn();
+            ProdName = new DataGridViewTextBoxColumn();
+            SupplierId = new DataGridViewTextBoxColumn();
+            SupplierName = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
             // 
             // cboPackageName
             // 
+            cboPackageName.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPackageName.FormattingEnabled = true;
             cboPackageName.Location = new Point(253, 44);
             cboPackageName.Name = "cboPackageName";
@@ -124,6 +133,7 @@
             // 
             txtID.Location = new Point(253, 98);
             txtID.Name = "txtID";
+            txtID.ReadOnly = true;
             txtID.Size = new Size(252, 31);
             txtID.TabIndex = 8;
             // 
@@ -131,6 +141,7 @@
             // 
             txtStartDate.Location = new Point(253, 138);
             txtStartDate.Name = "txtStartDate";
+            txtStartDate.ReadOnly = true;
             txtStartDate.Size = new Size(252, 31);
             txtStartDate.TabIndex = 9;
             // 
@@ -138,14 +149,17 @@
             // 
             txtEndDate.Location = new Point(253, 179);
             txtEndDate.Name = "txtEndDate";
+            txtEndDate.ReadOnly = true;
             txtEndDate.Size = new Size(252, 31);
             txtEndDate.TabIndex = 10;
             // 
             // txtDesc
             // 
             txtDesc.Location = new Point(253, 219);
+            txtDesc.MaxLength = 500;
             txtDesc.Multiline = true;
             txtDesc.Name = "txtDesc";
+            txtDesc.ReadOnly = true;
             txtDesc.ScrollBars = ScrollBars.Vertical;
             txtDesc.Size = new Size(252, 121);
             txtDesc.TabIndex = 11;
@@ -154,6 +168,7 @@
             // 
             txtBasePrice.Location = new Point(253, 346);
             txtBasePrice.Name = "txtBasePrice";
+            txtBasePrice.ReadOnly = true;
             txtBasePrice.Size = new Size(252, 31);
             txtBasePrice.TabIndex = 12;
             // 
@@ -161,6 +176,7 @@
             // 
             txtCommission.Location = new Point(253, 387);
             txtCommission.Name = "txtCommission";
+            txtCommission.ReadOnly = true;
             txtCommission.Size = new Size(252, 31);
             txtCommission.TabIndex = 13;
             // 
@@ -176,7 +192,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(214, 448);
+            btnDelete.Location = new Point(215, 448);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(112, 34);
             btnDelete.TabIndex = 15;
@@ -196,7 +212,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(393, 507);
+            button1.Location = new Point(1379, 448);
             button1.Name = "button1";
             button1.Size = new Size(112, 34);
             button1.TabIndex = 17;
@@ -204,11 +220,75 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // dgvProducts
+            // 
+            dgvProducts.AllowUserToAddRows = false;
+            dgvProducts.AllowUserToDeleteRows = false;
+            dgvProducts.BackgroundColor = SystemColors.Control;
+            dgvProducts.BorderStyle = BorderStyle.None;
+            dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { ProdSupID, ProdID, ProdName, SupplierId, SupplierName });
+            dgvProducts.Location = new Point(548, 44);
+            dgvProducts.Name = "dgvProducts";
+            dgvProducts.RowHeadersWidth = 62;
+            dgvProducts.Size = new Size(943, 374);
+            dgvProducts.TabIndex = 18;
+            // 
+            // ProdSupID
+            // 
+            ProdSupID.HeaderText = "PSID";
+            ProdSupID.MinimumWidth = 8;
+            ProdSupID.Name = "ProdSupID";
+            ProdSupID.ReadOnly = true;
+            ProdSupID.Width = 70;
+            // 
+            // ProdID
+            // 
+            ProdID.HeaderText = "Product ID";
+            ProdID.MinimumWidth = 8;
+            ProdID.Name = "ProdID";
+            ProdID.ReadOnly = true;
+            ProdID.Width = 150;
+            // 
+            // ProdName
+            // 
+            ProdName.HeaderText = "Product Name";
+            ProdName.MinimumWidth = 8;
+            ProdName.Name = "ProdName";
+            ProdName.ReadOnly = true;
+            ProdName.Width = 250;
+            // 
+            // SupplierId
+            // 
+            SupplierId.HeaderText = "Supplier ID";
+            SupplierId.MinimumWidth = 8;
+            SupplierId.Name = "SupplierId";
+            SupplierId.ReadOnly = true;
+            SupplierId.Width = 150;
+            // 
+            // SupplierName
+            // 
+            SupplierName.HeaderText = "Supplier Name";
+            SupplierName.MinimumWidth = 8;
+            SupplierName.Name = "SupplierName";
+            SupplierName.ReadOnly = true;
+            SupplierName.Width = 250;
+            // 
             // TravelPackageManager
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(578, 569);
+            ClientSize = new Size(1548, 516);
+            Controls.Add(dgvProducts);
             Controls.Add(button1);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
@@ -230,6 +310,7 @@
             Name = "TravelPackageManager";
             Text = "Package Manager";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -254,5 +335,11 @@
         private Button btnDelete;
         private Button btnUpdate;
         private Button button1;
+        private DataGridView dgvProducts;
+        private DataGridViewTextBoxColumn ProdSupID;
+        private DataGridViewTextBoxColumn ProdID;
+        private DataGridViewTextBoxColumn ProdName;
+        private DataGridViewTextBoxColumn SupplierId;
+        private DataGridViewTextBoxColumn SupplierName;
     }
 }
