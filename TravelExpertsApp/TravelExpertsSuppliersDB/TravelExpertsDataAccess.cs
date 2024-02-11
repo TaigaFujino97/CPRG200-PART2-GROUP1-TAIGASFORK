@@ -157,6 +157,28 @@ public static class TravelExpertsDataAccess
         }
     }
 
+    public static void UpdateSupplierContact(SupplierContact contact) // Updates the passed supplier contact in the DB
+    {
+        try
+        {
+            db.SaveChanges();
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            ex.Entries.Single().Reload();
+            var state = db.Entry(contact).State;
+            throw CreateDataAccessException(state);
+        }
+        catch (DbUpdateException ex)
+        {
+            throw CreateDataAccessException(ex);
+        }
+
+        catch (SqlException ex)
+        {
+            throw CreateDataAccessException(ex);
+        }
+    }
     public static void AddProduct(Product product)
     {
         db.Products.Add(product);

@@ -33,7 +33,7 @@ public partial class AddModifySupplierForm : Form
         TravelExpertsDataAccess.UpdateSupplier(supplier);
         cmbContacts.Items.Add(contact);
         cmbContacts.SelectedItem = contact;
-        
+
     }
     private void HideContactData()
     {
@@ -56,7 +56,7 @@ public partial class AddModifySupplierForm : Form
     {
         if (cmbContacts.SelectedItem != null)
         {
-            SupplierContact contact = cmbContacts.SelectedItem as SupplierContact;
+            SupplierContact contact = (SupplierContact)cmbContacts.SelectedItem;
             ShowContactData(contact);
         }
         else
@@ -141,13 +141,46 @@ public partial class AddModifySupplierForm : Form
 
     private void btnDeleteContact_Click(object sender, EventArgs e)
     {
-        if(cmbContacts.SelectedItem != null)
+        if (cmbContacts.SelectedItem != null)
         {
             TravelExpertsDataAccess.RemoveSupplierContact(supplier, (SupplierContact)cmbContacts.SelectedItem);
             cmbContacts.Items.Remove(cmbContacts.SelectedItem);
             cmbContacts.SelectedItem = null;
             HideContactData();
         }
-        
+
+    }
+
+    private void btnContactSave_Click(object sender, EventArgs e)
+    {
+        if (IsValidContactData() && cmbContacts.SelectedItem != null)
+        {
+            SupplierContact contact = (SupplierContact)cmbContacts.SelectedItem;
+            contact.SupConCompany = txtCompany.Text;
+            contact.SupConFirstName = txtFirstName.Text;
+            contact.SupConLastName = txtLastName.Text;
+            contact.SupConEmail = txtEmail.Text;
+            TravelExpertsDataAccess.UpdateSupplierContact(contact);
+            DisplayContacts();
+            cmbContacts.SelectedItem = contact;
+        }
+    }
+
+    private bool IsValidContactData()
+    {
+        bool success = true;
+        string errorMessage = "";
+
+        errorMessage += Validator.IsWithinLength(txtFirstName.Text, "First Name", 0, 50); //  nvarchar(50)
+        errorMessage += Validator.IsWithinLength(txtLastName.Text, "Last Name", 0, 50); //  nvarchar(50)
+        errorMessage += Validator.IsWithinLength(txtCompany.Text, "Company", 0, 255); //  nvarchar(255)
+        errorMessage += Validator.IsWithinLength(txtEmail.Text, "Email", 0, 255); //  nvarchar(255)
+
+        if (!string.IsNullOrEmpty(errorMessage))
+        {
+            success = false;
+            MessageBox.Show(errorMessage, "Entry Error");
+        }
+        return success;
     }
 }

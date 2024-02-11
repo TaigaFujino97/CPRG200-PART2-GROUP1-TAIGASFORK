@@ -155,6 +155,7 @@ partial class AddModifySupplierForm
         btnContactSave.TabIndex = 26;
         btnContactSave.Text = "Save Changes";
         btnContactSave.UseVisualStyleBackColor = true;
+        btnContactSave.Click += btnContactSave_Click;
         // 
         // label5
         // 

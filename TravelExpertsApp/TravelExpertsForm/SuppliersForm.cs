@@ -73,8 +73,8 @@ namespace TravelExpertsForm
                         int supplierId = Int32.Parse(val);
                         selectedSupplier = TravelExpertsDataAccess.FindSupplier(supplierId);
                     }
-                        
-                    
+
+
                 }
 
                 if (selectedSupplier != null)
@@ -93,7 +93,7 @@ namespace TravelExpertsForm
 
         private void DeleteSupplier()
         {
-            if(selectedSupplier != null)
+            if (selectedSupplier != null)
             {
                 DialogResult result =
                 MessageBox.Show($"Delete {selectedSupplier.SupName}?",
@@ -112,12 +112,12 @@ namespace TravelExpertsForm
                     }
                 }
             }
-            
+
         }
 
         private void ModifySupplier()
         {
-            if(selectedSupplier != null )
+            if (selectedSupplier != null)
             {
                 AddModifySupplierForm addModifyForm = new()
                 {
@@ -177,6 +177,11 @@ namespace TravelExpertsForm
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddSupplier();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
