@@ -124,7 +124,7 @@ partial class AddModifySupplierForm
         cmbContacts.FormattingEnabled = true;
         cmbContacts.Location = new Point(12, 37);
         cmbContacts.Name = "cmbContacts";
-        cmbContacts.Size = new Size(355, 23);
+        cmbContacts.Size = new Size(399, 23);
         cmbContacts.TabIndex = 22;
         cmbContacts.SelectedIndexChanged += cmbContacts_SelectedIndexChanged;
         // 
@@ -141,26 +141,26 @@ partial class AddModifySupplierForm
         grbContact.Controls.Add(txtFirstName);
         grbContact.Location = new Point(12, 76);
         grbContact.Name = "grbContact";
-        grbContact.Size = new Size(563, 130);
+        grbContact.Size = new Size(615, 130);
         grbContact.TabIndex = 23;
         grbContact.TabStop = false;
         grbContact.Visible = false;
         // 
         // btnContactSave
         // 
-        btnContactSave.Location = new Point(6, 90);
+        btnContactSave.Location = new Point(6, 89);
         btnContactSave.Margin = new Padding(2);
         btnContactSave.Name = "btnContactSave";
         btnContactSave.Size = new Size(101, 24);
         btnContactSave.TabIndex = 26;
-        btnContactSave.Text = "Save Changes";
+        btnContactSave.Text = "Save Contact";
         btnContactSave.UseVisualStyleBackColor = true;
         btnContactSave.Click += btnContactSave_Click;
         // 
         // label5
         // 
         label5.AutoSize = true;
-        label5.Location = new Point(318, 59);
+        label5.Location = new Point(408, 21);
         label5.Margin = new Padding(2, 0, 2, 0);
         label5.Name = "label5";
         label5.Size = new Size(39, 15);
@@ -169,10 +169,10 @@ partial class AddModifySupplierForm
         // 
         // txtEmail
         // 
-        txtEmail.Location = new Point(360, 51);
+        txtEmail.Location = new Point(450, 13);
         txtEmail.Margin = new Padding(2);
         txtEmail.Name = "txtEmail";
-        txtEmail.Size = new Size(191, 23);
+        txtEmail.Size = new Size(160, 23);
         txtEmail.TabIndex = 32;
         // 
         // label6
@@ -190,7 +190,7 @@ partial class AddModifySupplierForm
         txtCompany.Location = new Point(77, 51);
         txtCompany.Margin = new Padding(2);
         txtCompany.Name = "txtCompany";
-        txtCompany.Size = new Size(234, 23);
+        txtCompany.Size = new Size(370, 23);
         txtCompany.TabIndex = 30;
         // 
         // label4
@@ -231,7 +231,7 @@ partial class AddModifySupplierForm
         // 
         // btnAddContact
         // 
-        btnAddContact.Location = new Point(394, 10);
+        btnAddContact.Location = new Point(425, 19);
         btnAddContact.Margin = new Padding(2);
         btnAddContact.Name = "btnAddContact";
         btnAddContact.Size = new Size(101, 24);
@@ -242,7 +242,7 @@ partial class AddModifySupplierForm
         // 
         // btnDeleteContact
         // 
-        btnDeleteContact.Location = new Point(394, 47);
+        btnDeleteContact.Location = new Point(530, 19);
         btnDeleteContact.Margin = new Padding(2);
         btnDeleteContact.Name = "btnDeleteContact";
         btnDeleteContact.Size = new Size(101, 24);
@@ -257,7 +257,7 @@ partial class AddModifySupplierForm
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         CancelButton = btnCancel;
-        ClientSize = new Size(587, 308);
+        ClientSize = new Size(639, 308);
         ControlBox = false;
         Controls.Add(btnDeleteContact);
         Controls.Add(btnAddContact);
