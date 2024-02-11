@@ -146,6 +146,7 @@ public partial class AddModifySupplierForm : Form
             TravelExpertsDataAccess.RemoveSupplierContact(supplier, (SupplierContact)cmbContacts.SelectedItem);
             cmbContacts.Items.Remove(cmbContacts.SelectedItem);
             cmbContacts.SelectedItem = null;
+            HideContactData();
         }
         
     }

@@ -94,6 +94,7 @@ public static class TravelExpertsDataAccess
     {
         try
         {
+            if(supplier.SupplierId > highestSupplierId) highestSupplierId = supplier.SupplierId;
             db.Suppliers.Remove(supplier);
             db.SaveChanges();
         }
@@ -134,6 +135,7 @@ public static class TravelExpertsDataAccess
     {
         try
         {
+            if (contact.SupplierContactId > highestContactId) highestContactId = contact.SupplierContactId;
             supplier.SupplierContacts.Remove(contact);
             db.SupplierContacts.Remove(contact);
             db.SaveChanges();

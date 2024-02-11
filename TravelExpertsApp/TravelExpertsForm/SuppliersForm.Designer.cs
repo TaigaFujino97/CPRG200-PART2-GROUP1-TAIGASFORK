@@ -42,7 +42,7 @@
             dgvSuppliers.Columns.AddRange(new DataGridViewColumn[] { SupplierId, SupplierName, ContactsNumber });
             dgvSuppliers.Location = new Point(12, 31);
             dgvSuppliers.Name = "dgvSuppliers";
-            dgvSuppliers.Size = new Size(677, 165);
+            dgvSuppliers.Size = new Size(630, 165);
             dgvSuppliers.TabIndex = 0;
             dgvSuppliers.CellClick += dgvSuppliers_CellClick;
             // 
@@ -89,7 +89,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(701, 263);
+            ClientSize = new Size(655, 263);
             Controls.Add(btnAdd);
             Controls.Add(btnCancel);
             Controls.Add(dgvSuppliers);
