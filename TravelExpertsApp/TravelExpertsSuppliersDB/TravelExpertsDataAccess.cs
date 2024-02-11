@@ -6,14 +6,14 @@ namespace TravelExpertsSuppliersDB;
 
 public record SupplierDTO(string SupplierId, string SupplierName, int numContacts); // Data Transfer Object to plug into Forms
 
-public record SupplierContactDTO(string SupplierContactId, string SupConFirstName, string SupConLastName); // Data Transfer Object to plug into Forms
-
-public class TravelExpertsDataAccess
+public static class TravelExpertsDataAccess
 {
-    private TravelExpertsContext db = new(); // The Database
-
-    public Supplier? FindSupplier(int supplierId)
+    static int highestSupplierId = 0;
+    static int highestContactId = 0;
+    private static TravelExpertsContext db = new();
+    public static Supplier? FindSupplier(int supplierId)
     {
+        TravelExpertsContext db = new();
         try
         {
             return db.Suppliers.Find(supplierId);
@@ -24,22 +24,33 @@ public class TravelExpertsDataAccess
         }
     }
 
-    public List<SupplierDTO> GetAllSuppliers() =>
+    public static List<SupplierDTO> GetAllSuppliers() =>
         db.Suppliers
             .OrderBy(p => p.SupplierId)
             .Select(p => new SupplierDTO(p.SupplierId.ToString()!, p.SupName!,
                 p.SupplierContacts.Count()!))
             .ToList();
 
-
-    public List<SupplierContactDTO> GetSupplierContacts(Supplier supplier) =>
-        supplier.SupplierContacts
+    public static int GetSupplierId()
+    {
+        int query = db.Suppliers.Max(x => x.SupplierId);
+        if (query > highestSupplierId) highestSupplierId = query;
+        return ++highestSupplierId;
+    }
+    public static int GetContactId()
+    {
+        int query = db.SupplierContacts.Max(x => x.SupplierContactId);
+        if (query > highestContactId) highestContactId = query;
+        return ++highestContactId;
+    }
+    public static List<SupplierContact> GetSupplierContacts(Supplier supplier) =>
+             db.SupplierContacts
+            .Where(p => p.SupplierId == supplier.SupplierId)
             .OrderBy(p => p.SupplierContactId)
-            .Select(p => new SupplierContactDTO(p.SupplierContactId.ToString()!, p.SupConFirstName!,
-                p.SupConLastName!))
+            .Select(p => p)
             .ToList();
 
-    public void AddSupplier(Supplier supplier)
+    public static void AddSupplier(Supplier supplier)
     {
         try
         {
@@ -56,7 +67,7 @@ public class TravelExpertsDataAccess
         }
     }
 
-    public void UpdateSupplier(Supplier supplier) // Updates the passed supplier in the DB
+    public static void UpdateSupplier(Supplier supplier) // Updates the passed supplier in the DB
     {
         try
         {
@@ -79,7 +90,7 @@ public class TravelExpertsDataAccess
         }
     }
 
-    public void RemoveSupplier(Supplier supplier) // deletes the passed supplier from the DB
+    public static void RemoveSupplier(Supplier supplier) // deletes the passed supplier from the DB
     {
         try
         {
@@ -103,20 +114,61 @@ public class TravelExpertsDataAccess
         }
     }
 
-    public void AddProduct(Product product)
+    public static void AddSupplierContact(SupplierContact contact)
+    {
+        try
+        {
+            db.SupplierContacts.Add(contact);
+            db.SaveChanges();
+        }
+        catch (DbUpdateException ex)
+        {
+            throw CreateDataAccessException(ex);
+        }
+        catch (SqlException ex)
+        {
+            throw CreateDataAccessException(ex);
+        }
+    }
+    public static void RemoveSupplierContact(Supplier supplier, SupplierContact contact) // deletes the passed supplier from the DB
+    {
+        try
+        {
+            supplier.SupplierContacts.Remove(contact);
+            db.SupplierContacts.Remove(contact);
+            db.SaveChanges();
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            ex.Entries.Single().Reload();
+            var state = db.Entry(supplier).State;
+            throw CreateDataAccessException(state);
+        }
+        catch (DbUpdateException ex)
+        {
+            throw CreateDataAccessException(ex);
+        }
+
+        catch (SqlException ex)
+        {
+            throw CreateDataAccessException(ex);
+        }
+    }
+
+    public static void AddProduct(Product product)
     {
         db.Products.Add(product);
         db.SaveChanges();
     }
 
-    public void EditProduct(String newName,int ID)
+    public static void EditProduct(String newName,int ID)
     {
         var query = (from prod in db.Products where prod.ProductId == ID select prod).ToList();
         query[0].ProdName = newName;
         db.SaveChanges();
     }
 
-    public void DeleteProduct(int ID)
+    public static void DeleteProduct(int ID)
     {
         var query = db.Products.Where(x => x.ProductId == ID).Select(x => x).ToArray();
         if (query.Length >= 1)
@@ -126,7 +178,7 @@ public class TravelExpertsDataAccess
         }
     }
 
-    private DataAccessException CreateDataAccessException( // Returns a DataAccessException based on the type passed
+    private static DataAccessException CreateDataAccessException( // Returns a DataAccessException based on the type passed
         EntityState state)
     {
         string msg = "";
@@ -139,14 +191,14 @@ public class TravelExpertsDataAccess
         return new DataAccessException(msg, "Concurrency Error");
     }
 
-    private DataAccessException CreateDataAccessException( // Returns a DataAccessException based on the type passed
+    private static DataAccessException CreateDataAccessException( // Returns a DataAccessException based on the type passed
         DbUpdateException ex)
     {
         var sqlException = (SqlException)ex.InnerException!;
         return CreateDataAccessException(sqlException);
     }
 
-    private DataAccessException CreateDataAccessException(SqlException ex) // Returns a DataAccessException based on the type passed
+    private static DataAccessException CreateDataAccessException(SqlException ex) // Returns a DataAccessException based on the type passed
     {
         string msg = "";
         foreach (SqlError error in ex.Errors)

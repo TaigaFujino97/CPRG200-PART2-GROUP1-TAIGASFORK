@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Protocols;
 
 namespace TravelExpertsSuppliersDB.Models;
 
@@ -61,6 +60,7 @@ public partial class TravelExpertsContext : DbContext
         => optionsBuilder.
         UseSqlServer(ConfigurationManager.
             ConnectionStrings["TravelExpertsConnection"].ConnectionString);
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Affiliation>(entity =>
@@ -170,7 +170,7 @@ public partial class TravelExpertsContext : DbContext
 
         modelBuilder.Entity<PackagesProductsSupplier>(entity =>
         {
-            entity.HasKey(e => e.PackageProductSupplierId).HasName("PK__Packages__53E8ED994EEE118E");
+            entity.HasKey(e => e.PackageProductSupplierId).HasName("PK__Packages__53E8ED998FCBBF61");
 
             entity.HasOne(d => d.Package).WithMany(p => p.PackagesProductsSuppliers)
                 .OnDelete(DeleteBehavior.ClientSetNull)

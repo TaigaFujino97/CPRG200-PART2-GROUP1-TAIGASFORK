@@ -42,18 +42,16 @@ namespace Workshop4 //Mikkel Giesbrecht 2024/01
             {//Adding product
                 if (txtProductName.Text != "")
                 {
-                    TravelExpertsDataAccess db = new TravelExpertsDataAccess();
                     Product item = new Product();
                     item.ProdName = txtProductName.Text;
-                    db.AddProduct(item);
+                    TravelExpertsDataAccess.AddProduct(item);
                     this.Close();
                 }
             } else
             {//Editing product
                 if (txtProductName.Text != "")
                 {
-                    TravelExpertsDataAccess db = new TravelExpertsDataAccess();
-                    db.EditProduct(txtProductName.Text, Convert.ToInt32(txtProductID));
+                    TravelExpertsDataAccess.EditProduct(txtProductName.Text, Convert.ToInt32(txtProductID));
                     this.Close();
                 }
             }

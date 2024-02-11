@@ -86,10 +86,9 @@ namespace Workshop4 //Mikkel Giesbrecht 2024/01
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            TravelExpertsDataAccess db = new TravelExpertsDataAccess();
             if (MessageBox.Show("Are you sure you want to delete "+txtProductName.Text+"?","Delete Product.",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                db.DeleteProduct(Convert.ToInt32(cmbProductID.Text));
+                TravelExpertsDataAccess.DeleteProduct(Convert.ToInt32(cmbProductID.Text));
                 RefreshList();
             }
         }
