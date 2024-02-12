@@ -38,11 +38,11 @@ namespace TravelExpertsWebMVC.Controllers
             return View(package); // return the slipid to the post method
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Book()
-        {
-            int? custId = HttpContext.Session.GetInt32("CustomerId");
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Book()
+        //{
+        //    int? custId = HttpContext.Session.GetInt32("CustomerId");
+        //}
     }
 }

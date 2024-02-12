@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelExpertsSuppliersDB", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelPackageGUI", "ThreadedWorkshop4\TravelPackageGUI.csproj", "{B1F51518-8A4E-4E37-946E-25AE6B48AF06}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelExpertsWebMVC", "TravelExpertsWebMVC\TravelExpertsWebMVC.csproj", "{8D2AF752-51EE-46C1-8E9F-343C0F4C9719}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelExpertsDB", "TravelExpertsDB\TravelExpertsDB.csproj", "{6CF87797-F2E3-404C-83CE-7CBF2CCE55A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{B1F51518-8A4E-4E37-946E-25AE6B48AF06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1F51518-8A4E-4E37-946E-25AE6B48AF06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1F51518-8A4E-4E37-946E-25AE6B48AF06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D2AF752-51EE-46C1-8E9F-343C0F4C9719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D2AF752-51EE-46C1-8E9F-343C0F4C9719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D2AF752-51EE-46C1-8E9F-343C0F4C9719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D2AF752-51EE-46C1-8E9F-343C0F4C9719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CF87797-F2E3-404C-83CE-7CBF2CCE55A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CF87797-F2E3-404C-83CE-7CBF2CCE55A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CF87797-F2E3-404C-83CE-7CBF2CCE55A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CF87797-F2E3-404C-83CE-7CBF2CCE55A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
