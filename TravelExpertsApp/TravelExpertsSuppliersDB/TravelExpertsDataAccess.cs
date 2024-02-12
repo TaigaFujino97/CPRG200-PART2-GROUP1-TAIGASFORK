@@ -202,6 +202,22 @@ public static class TravelExpertsDataAccess
         }
     }
 
+    public static int GetProductIdFromName(string name)
+    {
+        return db.Products.Where(x=>x.ProdName == name).Select(x=>x.ProductId).FirstOrDefault();
+    }
+
+    public static int GetSupplierIdFromName(string name)
+    {
+        return db.Suppliers.Where(x => x.SupName == name).Select(x => x.SupplierId).FirstOrDefault();
+    }
+
+    public static void AddProductsSupplier(ProductsSupplier productsSupplier)
+    {
+        db.ProductsSuppliers.Add(productsSupplier);
+        db.SaveChanges();
+    }
+
     private static DataAccessException CreateDataAccessException( // Returns a DataAccessException based on the type passed
         EntityState state)
     {
