@@ -1,0 +1,19 @@
+﻿<ul class="navbar-nav ml-auto">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item me-5">
+            <a class="nav-link text-light" asp-action="/Home/Index" title="Welcome"> @* change the asp-action to go to the customers leases instead *@
+                Welcome back <span class="welcome">@User.Identity.Name!</span> 
+            </a>
+        </li>
+        <li class="nav-item me-5">
+            <a class="nav-link text-light" asp-controller="Customer" asp-action="Logout" asp-route-returnUrl=@Url.Action("Index", "Home")>Logout</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item me-5">
+            <a class="nav-link text-light" asp-controller="Customer" asp-action="Login">Sign in / Register</a>
+        </li>
+    }
+</ul>
