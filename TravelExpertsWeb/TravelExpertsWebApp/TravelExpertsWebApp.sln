@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExpertsMVC", "TravelExpertsMVC\TravelExpertsMVC.csproj", "{8EFB93EC-239A-475D-BE81-20FD3E305819}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelExpertsMVC", "TravelExpertsMVC\TravelExpertsMVC.csproj", "{8EFB93EC-239A-475D-BE81-20FD3E305819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExpertsDB", "TravelExpertsDB\TravelExpertsDB.csproj", "{58ECD5CE-A2DC-4D37-9593-DA076451F70A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8EFB93EC-239A-475D-BE81-20FD3E305819}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EFB93EC-239A-475D-BE81-20FD3E305819}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EFB93EC-239A-475D-BE81-20FD3E305819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58ECD5CE-A2DC-4D37-9593-DA076451F70A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58ECD5CE-A2DC-4D37-9593-DA076451F70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58ECD5CE-A2DC-4D37-9593-DA076451F70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58ECD5CE-A2DC-4D37-9593-DA076451F70A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
