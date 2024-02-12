@@ -5,8 +5,7 @@ namespace TravelExpertsForm
 {
     public partial class SuppliersForm : Form
     {
-        private Supplier selectedSupplier = null!; // Which product is currently being modified/deleted
-        private TravelExpertsDataAccess dbAccess = new(); // A Class for accessing dbAccess from TechSupport db
+        private Supplier? selectedSupplier = null!; // Which product is currently being modified/deleted
         public SuppliersForm()
         {
             InitializeComponent();
@@ -20,7 +19,7 @@ namespace TravelExpertsForm
         private void DisplaySuppliers()  // Refreshes the Suppliers
         {
             dgvSuppliers.Columns.Clear(); // Clear any existing data.
-            dgvSuppliers.DataSource = dbAccess.GetAllSuppliers();  // Pulls a formatted list of data from the DB
+            dgvSuppliers.DataSource = TravelExpertsDataAccess.GetAllSuppliers();  // Pulls a formatted list of data from the DB
 
             // add column for modify button
             DataGridViewButtonColumn modifyColumn = new()
@@ -39,6 +38,11 @@ namespace TravelExpertsForm
                 Text = "Remove"
             };
             dgvSuppliers.Columns.Add(deleteColumn);
+            dgvSuppliers.Columns[0].HeaderText = "ID";
+            dgvSuppliers.Columns[0].Width = 60;
+            dgvSuppliers.Columns[1].HeaderText = "Name";
+            dgvSuppliers.Columns[1].Width = 200;
+            dgvSuppliers.Columns[2].HeaderText = "# of Contacts";
 
             // format the column header
             dgvSuppliers.EnableHeadersVisualStyles = false;
@@ -63,8 +67,14 @@ namespace TravelExpertsForm
                 if (e.ColumnIndex == ModifyIndex || e.ColumnIndex == DeleteIndex)
                 {
                     DataGridViewCell cell = dgvSuppliers.Rows[e.RowIndex].Cells[0];
-                    int supplierId = Int32.Parse(cell.Value?.ToString());
-                    selectedSupplier = dbAccess.FindSupplier(supplierId);
+                    string? val = cell.Value.ToString();
+                    if (val != null)
+                    {
+                        int supplierId = Int32.Parse(val);
+                        selectedSupplier = TravelExpertsDataAccess.FindSupplier(supplierId);
+                    }
+
+
                 }
 
                 if (selectedSupplier != null)
@@ -83,38 +93,65 @@ namespace TravelExpertsForm
 
         private void DeleteSupplier()
         {
-            DialogResult result =
+            if (selectedSupplier != null)
+            {
+                DialogResult result =
                 MessageBox.Show($"Delete {selectedSupplier.SupName}?",
                 "Confirm Delete", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                try
+                if (result == DialogResult.Yes)
                 {
-                    dbAccess.RemoveSupplier(selectedSupplier);
-                    DisplaySuppliers();
-                }
-                catch (DataAccessException ex)
-                {
-                    HandleDataAccessError(ex);
+                    try
+                    {
+                        TravelExpertsDataAccess.RemoveSupplier(selectedSupplier);
+                        DisplaySuppliers();
+                    }
+                    catch (DataAccessException ex)
+                    {
+                        HandleDataAccessError(ex);
+                    }
                 }
             }
+
         }
 
         private void ModifySupplier()
         {
-            AddModifyForm addModifyForm = new()
+            if (selectedSupplier != null)
             {
-                Supplier = selectedSupplier
-            };
-            DialogResult result = addModifyForm.ShowDialog();
+                AddModifySupplierForm addModifyForm = new()
+                {
+                    supplier = selectedSupplier
+                };
+                DialogResult result = addModifyForm.ShowDialog();
 
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        selectedSupplier = addModifyForm.supplier;
+                        TravelExpertsDataAccess.UpdateSupplier(selectedSupplier);
+                        DisplaySuppliers();
+                    }
+
+                    catch (DataAccessException ex)
+                    {
+                        HandleDataAccessError(ex);
+                    }
+                }
+            }
+        }
+
+        private void AddSupplier()
+        {
+            AddModifySupplierForm addModifyForm = new();
+            DialogResult result = addModifyForm.ShowDialog();
             if (result == DialogResult.OK)
             {
                 try
                 {
-                    selectedSupplier = addModifyForm.Supplier;
-                    dbAccess.UpdateSupplier(selectedSupplier);
+                    selectedSupplier = addModifyForm.supplier;
+                    TravelExpertsDataAccess.UpdateSupplier(selectedSupplier);
                     DisplaySuppliers();
                 }
 
@@ -137,5 +174,14 @@ namespace TravelExpertsForm
             MessageBox.Show(ex.Message, ex.ErrorType);
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddSupplier();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

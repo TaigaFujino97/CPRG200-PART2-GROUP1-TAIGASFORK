@@ -29,33 +29,34 @@
         private void InitializeComponent()
         {
             dgvSuppliers = new DataGridView();
-            SupplierCode = new DataGridViewTextBoxColumn();
+            SupplierId = new DataGridViewTextBoxColumn();
             SupplierName = new DataGridViewTextBoxColumn();
             ContactsNumber = new DataGridViewTextBoxColumn();
+            btnCancel = new Button();
+            btnAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvSuppliers).BeginInit();
             SuspendLayout();
             // 
             // dgvSuppliers
             // 
-            dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSuppliers.Columns.AddRange(new DataGridViewColumn[] { SupplierCode, SupplierName, ContactsNumber });
+            dgvSuppliers.Columns.AddRange(new DataGridViewColumn[] { SupplierId, SupplierName, ContactsNumber });
             dgvSuppliers.Location = new Point(12, 31);
             dgvSuppliers.Name = "dgvSuppliers";
             dgvSuppliers.Size = new Size(630, 165);
             dgvSuppliers.TabIndex = 0;
             dgvSuppliers.CellClick += dgvSuppliers_CellClick;
             // 
-            // SupplierCode
+            // SupplierId
             // 
-            SupplierCode.HeaderText = "Supplier ID";
-            SupplierCode.Name = "SupplierCode";
-            SupplierCode.Width = 60;
+            SupplierId.HeaderText = "supplier ID";
+            SupplierId.Name = "SupplierId";
+            SupplierId.Width = 60;
             // 
             // SupplierName
             // 
             SupplierName.HeaderText = "Name";
             SupplierName.Name = "SupplierName";
-            SupplierName.Width = 150;
+            SupplierName.Width = 250;
             // 
             // ContactsNumber
             // 
@@ -63,11 +64,35 @@
             ContactsNumber.Name = "ContactsNumber";
             ContactsNumber.Width = 60;
             // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(136, 212);
+            btnCancel.Margin = new Padding(2);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(108, 40);
+            btnCancel.TabIndex = 20;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(12, 212);
+            btnAdd.Margin = new Padding(2);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(108, 40);
+            btnAdd.TabIndex = 21;
+            btnAdd.Text = "New supplier";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
             // SuppliersForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(654, 317);
+            ClientSize = new Size(655, 263);
+            Controls.Add(btnAdd);
+            Controls.Add(btnCancel);
             Controls.Add(dgvSuppliers);
             Name = "SuppliersForm";
             Text = "Suppliers";
@@ -79,8 +104,10 @@
         #endregion
 
         private DataGridView dgvSuppliers;
-        private DataGridViewTextBoxColumn SupplierCode;
+        private DataGridViewTextBoxColumn SupplierId;
         private DataGridViewTextBoxColumn SupplierName;
         private DataGridViewTextBoxColumn ContactsNumber;
+        private Button btnCancel;
+        private Button btnAdd;
     }
 }

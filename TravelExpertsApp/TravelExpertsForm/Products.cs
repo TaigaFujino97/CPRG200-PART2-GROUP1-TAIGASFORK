@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TravelExpertsForm;
 using TravelExpertsSuppliersDB;
 using TravelExpertsSuppliersDB.Models;
 
@@ -86,12 +87,19 @@ namespace Workshop4 //Mikkel Giesbrecht 2024/01
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            TravelExpertsDataAccess db = new TravelExpertsDataAccess();
-            if (MessageBox.Show("Are you sure you want to delete "+txtProductName.Text+"?","Delete Product.",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to delete " + txtProductName.Text + "?", "Delete Product.", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                db.DeleteProduct(Convert.ToInt32(cmbProductID.Text));
+                TravelExpertsDataAccess.DeleteProduct(Convert.ToInt32(cmbProductID.Text));
                 RefreshList();
             }
+        }
+
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            AddSuppliertoProduct frm = new AddSuppliertoProduct();
+            this.Hide();
+            frm.FormClosed += new FormClosedEventHandler(CloseForm);
+            frm.ShowDialog();
         }
     }
 }

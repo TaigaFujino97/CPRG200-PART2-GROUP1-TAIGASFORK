@@ -36,6 +36,7 @@
             btnEdit = new Button();
             btnReturn = new Button();
             btnDelete = new Button();
+            btnAddSupplier = new Button();
             SuspendLayout();
             // 
             // lblProductID
@@ -114,11 +115,22 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
+            // btnAddSupplier
+            // 
+            btnAddSupplier.Location = new Point(12, 113);
+            btnAddSupplier.Name = "btnAddSupplier";
+            btnAddSupplier.Size = new Size(194, 29);
+            btnAddSupplier.TabIndex = 9;
+            btnAddSupplier.Text = "Add Supplier to Product";
+            btnAddSupplier.UseVisualStyleBackColor = true;
+            btnAddSupplier.Click += btnAddSupplier_Click;
+            // 
             // Products
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(317, 154);
+            Controls.Add(btnAddSupplier);
             Controls.Add(btnDelete);
             Controls.Add(btnReturn);
             Controls.Add(btnEdit);
@@ -143,5 +155,6 @@
         private Button btnEdit;
         private Button btnReturn;
         private Button btnDelete;
+        private Button btnAddSupplier;
     }
 }
