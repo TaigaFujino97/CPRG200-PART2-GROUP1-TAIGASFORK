@@ -163,5 +163,42 @@ namespace TravelExpertsMVC.Controllers
                 return View(editedCustomer);
             }
         }
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(Customer withNewPassword)
+        {
+            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            ModelState.Remove("CustFirstName");
+            ModelState.Remove("CustLastName");
+            ModelState.Remove("CustAddress");
+            ModelState.Remove("CustCity");
+            ModelState.Remove("CustProv");
+            ModelState.Remove("CustPostal");
+            ModelState.Remove("CustCountry");
+            ModelState.Remove("CustHomePhone");
+            ModelState.Remove("CustBusPhone");
+            ModelState.Remove("CustEmail");
+            ModelState.Remove("Agent");
+            string newPassword = withNewPassword.Password;
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    CustomerManager.UpdatePassword(db!, customerId, newPassword);
+                    TempData["Message"] = $"Your password was successfully changed";
+                }
+                catch (Exception)
+                {
+                    TempData["Message"] = "There was a problem with changing your password. Please try again later.";
+                    TempData["IsError"] = true;
+                    return View();
+                }
+            }
+            return RedirectToAction("Account", "Customer");
+        }
     }
 }

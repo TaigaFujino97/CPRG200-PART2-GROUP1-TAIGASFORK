@@ -147,44 +147,48 @@ body {
     padding-left: 12px;
 }
 
-#account-info {
-    background-color: #cae3fc;
-    border-radius: 1em;
+#account-info dd {
+    color: #429ffc;
 }
-    #account-info dd {
-        color: #429ffc;
-    }
-    #account-info dt {
-        color: #81AFDE;
-    }
+#account-info dt {
+    color: #81AFDE;
+}
 
 .text-body-secondary {
     text-decoration: none !important;
 }
 
-#logout-link{
+#logout-link {
     font-size: 1.3em;
-    color: dimgray;
+    color: #2a83de;
+    text-decoration: none;
 }
 
 dt {
     font-size: 15px !important;
     font-weight: 100 !important;
     margin-bottom: 12px;
-    color: #81AFDE !important;
+    color: #011830 !important;
 }
 
-#personal{
+#personal {
     font-size: 15px;
     font-weight: 150;
     margin-bottom: 12px;
+    color: #1d4a78 !important;
 }
 
 #account-header {
-    text-align: right;
-    margin-bottom: 1rem;
+    text-align: left;
+    margin-bottom: 1em;
+    background-color: white;
     height: 3rem; /* Set the height of the header div */
-    line-height: 3rem; /* Vertically center the text */
+    color: #81AFDE;
+}
+#account-body {
+    background-color: #cae3fc;
+    border-radius: 1em;
+    padding: 1em
 }
 
 #account-info {
@@ -193,14 +197,14 @@ dt {
 
 #edit-form {
     display: flex;
-    align-items: flex-start; /* Align the label and input at the top */
-    margin-bottom: 1rem;
+    align-items: stretch; /* Align the label and input at the top */
+    margin-bottom: 1.5rem;
 }
 
     #edit-form label {
         flex: 0 0 150px; /* Set a fixed width for the label */
         padding-right: 10px;
-        text-align: right;
+        text-align: left;
     }
 
 #edit-form-control {
@@ -210,4 +214,8 @@ dt {
 
 select.form-select {
     width: 100%; /* Make the select element take up the full width */
+}
+.custom-btn {
+    width: 150px;
+    margin-inline-start: 9.5em;
 }

@@ -39,6 +39,16 @@ namespace TravelExpertsDB
             }
         }
 
+        public static void UpdatePassword(TravelExpertsContext db, int? id, string newPassword)
+        {
+            Customer? customer = db.Customers.Find(id);
+            if (customer != null)
+            {
+                customer.Password = newPassword;
+                db.Customers.Update(customer);
+                db.SaveChanges();
+            }
+        }
         public static bool EmailExists(TravelExpertsContext db, string email)
         {
                 bool exists = db.Customers.Any(cst => cst.CustEmail.ToLower() == email.ToLower());

@@ -11,12 +11,12 @@
 }
 <div class="infopage">
     <partial name="_AccountPartial" />
-    <div id="account-header">
-        <h1>Update Personal Info</h1>
-    </div>
     <div id="account-info" class="container-fluid mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-4">
+        <div id="account-header">
+            <h1>Edit Account</h1>
+        </div>
+        <div id="account-body" class="row">
+            <div class="col-md-6">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div id="edit-form" class="form-group">
@@ -85,7 +85,7 @@
                         <span asp-validation-for="CustEmail" class="text-danger"></span>
                     </div>
                     <div id="edit-form" class="form-group mt-3">
-                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="submit" value="Save changes" class="btn btn-primary form-control custom-btn" />
                     </div>
                 </form>
                 @Html.HiddenFor(model => model.CustomerId)
