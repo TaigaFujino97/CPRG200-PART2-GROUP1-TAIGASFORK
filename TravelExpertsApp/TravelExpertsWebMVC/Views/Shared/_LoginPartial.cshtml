@@ -5,7 +5,7 @@
             <a class="nav-link disabled text-light" asp-area=" " asp-controller=" Customer" asp-action="Account">Welcome back @User.Identity.Name!</a>
         </li>
         <li class="nav-item">
-            <form class="form-inline" asp-controller="Customer" asp-action="Logout"
+            <form class="form-inline" asp-controller="Account" asp-action="Logout"
                     asp-route-returnUrl=@Url.Action("Index", "Rentals")>
                 <button type="submit" class="nav-link btn btn-link text-light">Sign out</button>
             </form>
@@ -14,7 +14,7 @@
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-light" asp-controller="Customer" asp-action="Login">Sign in / Register</a>
+            <a class="nav-link text-light" asp-controller="Account" asp-action="Login">Sign in / Register</a>
         </li>
     }
 </ul>

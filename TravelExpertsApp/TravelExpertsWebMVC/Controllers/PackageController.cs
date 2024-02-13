@@ -12,7 +12,7 @@ namespace TravelExpertsWebMVC.Controllers
         {
             this.db = db;
         }
-        public IActionResult Index(int id)
+        public ActionResult Index(int id)
         {
             List<Package> packages = PackageDB.GetPackages(db!);
             return View(packages);
@@ -38,11 +38,11 @@ namespace TravelExpertsWebMVC.Controllers
             return View(package); // return the slipid to the post method
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Book()
-        //{
-        //    int? custId = HttpContext.Session.GetInt32("CustomerId");
-        //}
+        [Authorize]
+        public ActionResult CreateBooking(int id)
+        {
+            List<TripType> types = BookingDB.GetTripTypes(db!);
+            return View(new Booking());
+        }
     }
 }
