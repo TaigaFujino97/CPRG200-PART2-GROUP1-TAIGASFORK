@@ -138,7 +138,7 @@
             Controls.Add(lblSupplier);
             Controls.Add(lblProduct);
             Name = "AddSuppliertoProduct";
-            Text = "AddSuppliertoProduct";
+            Text = "Configure Suppliers";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)productsSupplierBindingSource).EndInit();
             ResumeLayout(false);
