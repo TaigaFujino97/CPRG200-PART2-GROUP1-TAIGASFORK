@@ -218,6 +218,13 @@ public static class TravelExpertsDataAccess
         db.SaveChanges();
     }
 
+    public static void DeleteProductsSupplier(int productId, int supplierId)
+    {
+        var productsSupplier = db.ProductsSuppliers.Where(x => x.ProductId == productId).Where(x => x.SupplierId == supplierId).Select(x => x).FirstOrDefault();
+        db.ProductsSuppliers.Remove(productsSupplier);
+        db.SaveChanges();
+    }
+
     private static DataAccessException CreateDataAccessException( // Returns a DataAccessException based on the type passed
         EntityState state)
     {
