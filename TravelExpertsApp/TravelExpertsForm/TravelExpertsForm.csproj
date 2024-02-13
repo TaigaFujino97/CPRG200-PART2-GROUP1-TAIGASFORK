@@ -23,4 +23,8 @@
     <ProjectReference Include="..\TravelExpertsSuppliersDB\TravelExpertsSuppliersDB.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>
