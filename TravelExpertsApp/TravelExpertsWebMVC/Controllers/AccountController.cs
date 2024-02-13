@@ -9,11 +9,11 @@ using System.Collections.Generic;
 
 namespace TravelExpertsMVC.Controllers
 {
-    public class CustomerController : Controller
+    public class AccountController : Controller
     {
         private TravelExpertsContext? db { get; set; }
         // added constructor
-        public CustomerController(TravelExpertsContext db)
+        public AccountController(TravelExpertsContext db)
         {
             this.db = db;
         }

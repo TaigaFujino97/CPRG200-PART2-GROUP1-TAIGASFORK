@@ -12,7 +12,7 @@ html {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 .nav-link:hover {
-    color: rgba(179, 200, 255, 0.8) !important;
+    color: #1d4a78 !important;
 }
 .nav-link{
     font-weight: 400;
@@ -129,7 +129,7 @@ body {
 
 .carosol-overylay {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -219,3 +219,12 @@ select.form-select {
     width: 150px;
     margin-inline-start: 9.5em;
 }
+.btn-primary {
+    background-color: #81AFDE;
+    border-color: #81AFDE;
+}
+    .btn-primary:hover {
+        background-color: #1d4a78;
+        border-color: #1d4a78;
+        color: lightslategrey;
+    }
