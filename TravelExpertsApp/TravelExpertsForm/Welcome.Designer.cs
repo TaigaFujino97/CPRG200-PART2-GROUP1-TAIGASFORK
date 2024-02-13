@@ -48,7 +48,7 @@
             // 
             // btnSuppliers
             // 
-            btnSuppliers.Location = new Point(527, 292);
+            btnSuppliers.Location = new Point(551, 292);
             btnSuppliers.Name = "btnSuppliers";
             btnSuppliers.Size = new Size(180, 70);
             btnSuppliers.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // btnPackage
             // 
-            btnPackage.Location = new Point(294, 292);
+            btnPackage.Location = new Point(318, 292);
             btnPackage.Name = "btnPackage";
             btnPackage.Size = new Size(170, 70);
             btnPackage.TabIndex = 2;
@@ -69,10 +69,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(91, 33);
+            pictureBox1.Location = new Point(273, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(640, 180);
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.Size = new Size(283, 258);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
@@ -80,7 +80,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.AliceBlue;
+            BackColor = Color.RoyalBlue;
             ClientSize = new Size(800, 450);
             Controls.Add(pictureBox1);
             Controls.Add(btnPackage);
@@ -90,7 +90,6 @@
             Text = "Welcome";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
