@@ -1,0 +1,100 @@
+﻿@model TravelExpertsDB.Customer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@if (TempData["Message"] != null)
+{
+    <h4 class="@(TempData["IsError"] != null? "text-danger": "text-success")">
+        @TempData["Message"]
+    </h4>
+}
+<div class="infopage">
+    <partial name="_AccountPartial" />
+    <div id="account-header">
+        <h1>Update Personal Info</h1>
+    </div>
+    <div id="account-info" class="container-fluid mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustFirstName" class="control-label"></label>
+                        <input asp-for="CustFirstName" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustFirstName" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustLastName" class="control-label"></label>
+                        <input asp-for="CustLastName" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustLastName" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustAddress" class="control-label"></label>
+                        <input asp-for="CustAddress" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustAddress" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustCity" class="control-label"></label>
+                        <input asp-for="CustCity" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustCity" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group mt-3">
+                        <label asp-for="CustProv" class="control-label"></label>
+                        <select name="CustProv" asp-for="CustProv" id="edit-form-control" class="form-select rounded">
+                            <option value="XXX">Select</option>
+                            <option value="AB">Alberta</option>
+                            <option value="BC">British Columbia</option>
+                            <option value="MB">Manitoba</option>
+                            <option value="NB">New Brunswick</option>
+                            <option value="NL">New FoundLand and Labrador</option>
+                            <option value="NT">NorthWest Territories</option>
+                            <option value="NS">Nova Scotia</option>
+                            <option value="NU">Nunavut</option>
+                            <option value="ON">Ontario</option>
+                            <option value="PE">Prince Edward Island</option>
+                            <option value="QC">Quebec</option>
+                            <option value="SK">Saskatchewan</option>
+                            <option value="TY">Yukon</option>
+                        </select>
+                        <span asp-validation-for="CustProv" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustPostal" class="control-label"></label>
+                        <input asp-for="CustPostal" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustPostal" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustCountry" class="control-label"></label>
+                        <input asp-for="CustCountry" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustCountry" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustHomePhone" class="control-label"></label>
+                        <input asp-for="CustHomePhone" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustHomePhone" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustBusPhone" class="control-label"></label>
+                        <input asp-for="CustBusPhone" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustBusPhone" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group">
+                        <label asp-for="CustEmail" class="control-label"></label>
+                        <input asp-for="CustEmail" id="edit-form-control" class="form-control" />
+                        <span asp-validation-for="CustEmail" class="text-danger"></span>
+                    </div>
+                    <div id="edit-form" class="form-group mt-3">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+                @Html.HiddenFor(model => model.CustomerId)
+                @Html.HiddenFor(model => model.Password)
+                @Html.HiddenFor(model => model.ConfirmPassword)
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -67,53 +67,15 @@ body {
 @media screen and (max-width: 1200px) {
     .infopage {
         flex-direction: column; /* Change to column layout */
-        justify-content: space-evenly;
+        justify-content: flex-start;
     }
 
-    .address {
-        background-color: #81AFDE;
-        padding: 3em;
-        border-radius: 1em;
-        margin-bottom: 2em;
+    #account-info {
         width: 100%;
     }
 
-    .phoneNumbers {
-        background-color: #81AFDE;
-        padding: 3em;
-        border-radius: 1em;
-        margin-bottom: 2em;
-        width: 100%;
-    }
-
-    .personal {
-        background-color: #81AFDE;
-        padding: 3em;
-        border-radius: 1em;
-        width: 100%;
-    }
-}
-
-@media screen and (min-width: 1201px) {
-    .address {
-        background-color: #81AFDE;
-        padding: 3em;
-        border-radius: 1em;
-        width: 30%;
-    }
-
-    .phoneNumbers {
-        background-color: #81AFDE;
-        padding: 3em;
-        border-radius: 1em;
-        width: 30%;
-    }
-
-    .personal {
-        background-color: #81AFDE;
-        padding: 3em;
-        border-radius: 1em;
-        width: 30%;
+    #account-menu {
+        width: 100% !important;
     }
 }
 
@@ -178,4 +140,74 @@ body {
 
 #carosol-text {
     font-size: 1.5em;
+}
+
+#account-menu{
+    min-width: 250px;
+    padding-left: 12px;
+}
+
+#account-info {
+    background-color: #cae3fc;
+    border-radius: 1em;
+}
+    #account-info dd {
+        color: #429ffc;
+    }
+    #account-info dt {
+        color: #81AFDE;
+    }
+
+.text-body-secondary {
+    text-decoration: none !important;
+}
+
+#logout-link{
+    font-size: 1.3em;
+    color: dimgray;
+}
+
+dt {
+    font-size: 15px !important;
+    font-weight: 100 !important;
+    margin-bottom: 12px;
+    color: #81AFDE !important;
+}
+
+#personal{
+    font-size: 15px;
+    font-weight: 150;
+    margin-bottom: 12px;
+}
+
+#account-header {
+    text-align: right;
+    margin-bottom: 1rem;
+    height: 3rem; /* Set the height of the header div */
+    line-height: 3rem; /* Vertically center the text */
+}
+
+#account-info {
+    margin-top: -3rem; /* Negative margin to move the div up and align it with the header */
+}
+
+#edit-form {
+    display: flex;
+    align-items: flex-start; /* Align the label and input at the top */
+    margin-bottom: 1rem;
+}
+
+    #edit-form label {
+        flex: 0 0 150px; /* Set a fixed width for the label */
+        padding-right: 10px;
+        text-align: right;
+    }
+
+#edit-form-control {
+    flex: 1; /* Make the input take up the remaining space */
+    margin-bottom: 0;
+}
+
+select.form-select {
+    width: 100%; /* Make the select element take up the full width */
 }

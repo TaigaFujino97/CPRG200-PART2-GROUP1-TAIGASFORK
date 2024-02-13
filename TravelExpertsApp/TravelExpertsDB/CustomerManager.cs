@@ -21,10 +21,35 @@ namespace TravelExpertsDB
                 db.SaveChanges();
         }
 
+        public static void UpdateCustomer(TravelExpertsContext db, int id, Customer updatedCustomer)
+        {
+            Customer? customer = db.Customers.Find(id);
+            if (customer != null)
+            {
+                customer.CustFirstName = updatedCustomer.CustFirstName;
+                customer.CustLastName = updatedCustomer.CustLastName;
+                customer.CustEmail = updatedCustomer.CustEmail;
+                customer.CustAddress = updatedCustomer.CustAddress;
+                customer.CustCity = updatedCustomer.CustCity;
+                customer.CustCountry = updatedCustomer.CustCountry;
+                customer.CustPostal = updatedCustomer.CustPostal;
+                customer.CustProv = updatedCustomer.CustProv;
+                db.Customers.Update(customer);
+                db.SaveChanges(); // save  changes to the database
+            }
+        }
+
         public static bool EmailExists(TravelExpertsContext db, string email)
         {
                 bool exists = db.Customers.Any(cst => cst.CustEmail.ToLower() == email.ToLower());
                 return exists;
+        }
+
+        public static bool NewEmailExists(TravelExpertsContext db, int? id, string email)
+        {
+            bool exists = db.Customers.Any(cst => cst.CustomerId != id && cst.CustEmail.ToLower() == email.ToLower());
+            return exists;
+
         }
         public static Customer GetCustomerData(TravelExpertsContext db, int? id)
         {

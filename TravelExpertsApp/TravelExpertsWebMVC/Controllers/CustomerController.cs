@@ -88,7 +88,7 @@ namespace TravelExpertsMVC.Controllers
         {
             if (CustomerManager.EmailExists(db, newCustomerData.CustEmail))
             {
-                ModelState.AddModelError("Username", $"This email {newCustomerData.CustEmail} is already registered to an account.");
+                ModelState.AddModelError("CustEmail", $"This email {newCustomerData.CustEmail} is already registered to an account.");
             }
 
             if (ModelState.IsValid)
@@ -115,8 +115,53 @@ namespace TravelExpertsMVC.Controllers
         public ActionResult Account()
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
-            Customer customer = CustomerManager.GetCustomerData(db, customerId);
+            Customer customer = CustomerManager.GetCustomerData(db!, customerId);
             return View(customer);
+        }
+
+        //[HttpGet]
+        // Please use the same format as "Account.cshtml". Just replace the content inside of div id="account-info" to keep the style consistent.
+        public ActionResult OrderHistory()
+        {
+            return View();
+        }
+
+        //[HttpGet]
+        public ActionResult Edit()
+        {
+            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            Customer customer = CustomerManager.GetCustomerData(db!, customerId);
+            return View(customer);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Customer editedCustomer)
+        {
+            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            if (CustomerManager.NewEmailExists(db, customerId, editedCustomer.CustEmail!))
+            {
+                ModelState.AddModelError("CustEmail", $"This email {editedCustomer.CustEmail} is already registered to another account.");
+            }
+            ModelState.Remove("Password");
+            ModelState.Remove("ConfirmPassword");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    CustomerManager.UpdateCustomer(db, (int)customerId, editedCustomer);
+                    TempData["Message"] = $"Your account was successfully updated";
+                }
+                catch (Exception)
+                {
+                    TempData["Message"] = "There was a problem with updating your account. Please try again later.";
+                    TempData["IsError"] = true;
+                }
+                return RedirectToAction("Account", "Customer");
+            }
+            else
+            {
+                return View(editedCustomer);
+            }
         }
     }
 }
