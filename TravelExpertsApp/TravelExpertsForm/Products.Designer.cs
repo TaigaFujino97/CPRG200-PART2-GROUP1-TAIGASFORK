@@ -121,7 +121,7 @@
             btnAddSupplier.Name = "btnAddSupplier";
             btnAddSupplier.Size = new Size(194, 29);
             btnAddSupplier.TabIndex = 9;
-            btnAddSupplier.Text = "Add Supplier to Product";
+            btnAddSupplier.Text = "Configure Supply Chain";
             btnAddSupplier.UseVisualStyleBackColor = true;
             btnAddSupplier.Click += btnAddSupplier_Click;
             // 
