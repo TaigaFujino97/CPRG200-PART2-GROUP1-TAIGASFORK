@@ -18,7 +18,7 @@ namespace TravelExpertsMVC
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie(); // Add more authentication schemes if needed
+            }).AddCookie(opt => opt.LoginPath = "/Customer/Login"); ; // Add more authentication schemes if needed
 
             builder.Services.AddDbContext<TravelExpertsContext>
                 (options => options.UseSqlServer(builder.Configuration.GetConnectionString("travelexpertscon")));

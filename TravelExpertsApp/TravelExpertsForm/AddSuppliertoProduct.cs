@@ -33,6 +33,7 @@ namespace TravelExpertsForm
                 cmbSupplier.Items.Add(item.SupName);
             }
             cmbSupplier.SelectedIndex = 0;
+            dataGridView1.DataSource = db.ProductsSuppliers.Select(x => new {x.ProductSupplierId,x.Product.ProdName,x.Supplier.SupName}).ToList();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -48,6 +49,15 @@ namespace TravelExpertsForm
                 item.ProductId = TravelExpertsDataAccess.GetProductIdFromName(cmbProduct.Text);
                 item.SupplierId = TravelExpertsDataAccess.GetSupplierIdFromName(cmbSupplier.Text);
                 TravelExpertsDataAccess.AddProductsSupplier(item);
+                this.Close();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (cmbProduct.Text != "" && cmbSupplier.Text != "")
+            {
+                TravelExpertsDataAccess.DeleteProductsSupplier(TravelExpertsDataAccess.GetProductIdFromName(cmbProduct.Text), TravelExpertsDataAccess.GetSupplierIdFromName(cmbSupplier.Text));
                 this.Close();
             }
         }
