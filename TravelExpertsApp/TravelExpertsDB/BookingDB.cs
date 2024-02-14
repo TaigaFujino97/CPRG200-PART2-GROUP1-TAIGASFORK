@@ -14,13 +14,17 @@ namespace TravelExpertsDB
             List <TripType> types = db.TripTypes.OrderBy(x => x.Ttname).ToList();
             return types;
         }
-        public static Booking CreateBooking(int custId, int? packId, int numTravel)
+        public static Booking CreateBooking(int custId, int? packId, int numTravel, string tripType)
         {
             Booking booking = new Booking();
             booking.BookingDate = DateTime.Now; ;
             booking.CustomerId = custId;
             booking.PackageId = packId;
             booking.TravelerCount = numTravel;
+            if(tripType != null)
+            {
+                booking.TripTypeId = tripType[0].ToString();
+            }
             return booking;
         }
 
@@ -40,7 +44,7 @@ namespace TravelExpertsDB
 
         public static List<Booking> GetAllBookings(TravelExpertsContext db, int customerId)
         {
-            List<Booking> bookings = db.Bookings.Include(b => b.Package).Include(b => b.TripType).Where(b => b.CustomerId == null || b.CustomerId == customerId).ToList();
+            List<Booking> bookings = db.Bookings.Include(b => b.Package).Include(b => b.TripType).Where(b => b.CustomerId == customerId).OrderByDescending(b => b.BookingDate).ToList();
             return bookings;
         }
 
