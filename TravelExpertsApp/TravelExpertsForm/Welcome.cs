@@ -44,14 +44,6 @@ namespace TravelExpertsForm
             travelPackageManager.ShowDialog();
         }
 
-        private void btnAgents_Click(object sender, EventArgs e)
-        {
-            AgentsForm AgentsForm = new AgentsForm();
-            AgentsForm.FormClosed += new FormClosedEventHandler(CloseForm);
-            this.Hide();
-            AgentsForm.ShowDialog();
-        }
-
         private void CloseForm(object sender, EventArgs e)
         {
             this.Show();
