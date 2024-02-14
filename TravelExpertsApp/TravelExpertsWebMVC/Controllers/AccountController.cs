@@ -31,7 +31,7 @@ namespace TravelExpertsMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(Customer cust) // data collected from the form "user"
         {
-            Customer cst = CustomerManager.Authenticate(db, cust.CustEmail, cust.Password);
+            Customer? cst = CustomerManager.Authenticate(db, cust.CustEmail, cust.Password);
             if (cst == null) // if there are no matching username + password combinations
             {
                 TempData["LoginButtonClicked"] = true; // displays a warning message "password or username was incorrect".
