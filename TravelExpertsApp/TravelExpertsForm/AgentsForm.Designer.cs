@@ -313,6 +313,7 @@
             MaximumSize = new Size(1241, 564);
             MinimumSize = new Size(1241, 564);
             Name = "AgentsForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "AgentsForm";
             tableLayoutPanel1.ResumeLayout(false);
             groupBox7.ResumeLayout(false);
