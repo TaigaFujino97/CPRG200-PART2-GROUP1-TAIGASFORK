@@ -30,7 +30,7 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Customer" asp-action="Account">My Account</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Account">My Account</a>
                             </li>
                         }
                     </ul>
@@ -56,9 +56,9 @@
     <script>
         $(document).ready(function () {
             $('#logo-link').hover(function () {
-                $('#logo').attr('src', '/images/logowtextblue.png');
+                $('#logo').attr('src', '/images/logowtexthover.png');
             }, function () {
-                $('#logo').attr('src', '/images/logowtextwhite.png'); // replace this with a new logo with the hover color.
+                $('#logo').attr('src', '/images/logowtextwhite.png');
             });
         });
     </script>

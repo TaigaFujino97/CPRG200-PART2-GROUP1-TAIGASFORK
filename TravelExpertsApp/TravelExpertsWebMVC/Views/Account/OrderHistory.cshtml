@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TravelExpertsDB.Booking>
+
+@{
+    ViewData["Title"] = "OrderHistory";
+}
+<div class="infopage">
+    <partial name="_AccountPartial" />
+    <div id="account-info" class="container-fluid mt-5">
+        <div id="account-header">
+        <h1>Order History</h1>
+        </div>
+        <div id="account-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Booking ID
+                        </th>
+                        <th>
+                            Order Date
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookingId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookingDate)
+                            </td>
+                            <td>
+                                <a asp-action="OrderHistoryDetails" asp-route-id="@item.BookingId" class="btn btn-primary">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

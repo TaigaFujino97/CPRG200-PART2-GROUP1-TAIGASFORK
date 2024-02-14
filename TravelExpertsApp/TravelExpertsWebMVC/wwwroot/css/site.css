@@ -234,3 +234,12 @@ select.form-select {
     justify-content: start;
     margin-bottom: 2em;
 }
+.table {
+    background-color: #cae3fc;
+}
+tr,
+thead,
+td,
+th {
+    background-color: #cae3fc !important;
+}

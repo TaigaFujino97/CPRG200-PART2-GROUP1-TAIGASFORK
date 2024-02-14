@@ -123,7 +123,16 @@ namespace TravelExpertsMVC.Controllers
         // Please use the same format as "Account.cshtml". Just replace the content inside of div id="account-info" to keep the style consistent.
         public ActionResult OrderHistory()
         {
-            return View();
+            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            List<Booking> bookings = BookingDB.GetAllBookings(db!, customerId);
+            return View(bookings);
+        }
+        public ActionResult OrderHistoryDetails(int id)
+        {
+            OrderDB orderDb = new OrderDB();
+            OrderDTO order = orderDb.GetOrderDetails(db!, id);
+
+            return View(order);
         }
 
         //[HttpGet]

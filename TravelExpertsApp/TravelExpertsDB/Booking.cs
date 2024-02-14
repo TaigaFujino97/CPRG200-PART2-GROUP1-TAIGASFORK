@@ -17,6 +17,7 @@ public partial class Booking
     public int BookingId { get; set; }
 
     [Column(TypeName = "datetime")]
+    [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}")]
     public DateTime? BookingDate { get; set; }
 
     [StringLength(50)]
