@@ -98,12 +98,13 @@ namespace TravelExpertsMVC.Controllers
                     CustomerManager.CreateCustomer(db, newCustomerData);
                     TempData["Message"] = $"Thank you for registering {newCustomerData.CustFirstName} {newCustomerData.CustLastName}!";
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    TempData["Message"] = "There was a problem with registering. Please try again later.";
+                    TempData["Message"] = "There was a problem with registering. Please try again later." + e.Message + e.InnerException.Message;
                     TempData["IsError"] = true;
                 }
-                return RedirectToAction("Login", "Customer");
+                //    return RedirectToAction("Login", "Customer");
+                return View();
             }
             else
             {
@@ -114,16 +115,26 @@ namespace TravelExpertsMVC.Controllers
         //[HttpGet]
         public ActionResult Account()
         {
-            int? customerId = HttpContext.Session.GetInt32("CustomerId");
-            Customer customer = CustomerManager.GetCustomerData(db!, customerId);
-            return View(customer);
+            try
+            {
+                int? customerId = HttpContext.Session.GetInt32("CustomerId");
+                Customer customer = CustomerManager.GetCustomerData(db!, customerId);
+                return View(customer);
+            }
+            catch
+            {
+                return View();
+            }
+            
         }
 
         //[HttpGet]
         // Please use the same format as "Account.cshtml". Just replace the content inside of div id="account-info" to keep the style consistent.
         public ActionResult OrderHistory()
         {
-            return View();
+            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            Customer customer = CustomerManager.GetCustomerData(db!, customerId);
+            return View(customer.Bookings);
         }
 
         //[HttpGet]
