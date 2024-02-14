@@ -182,7 +182,7 @@ dt {
     text-align: left;
     margin-bottom: 1em;
     background-color: white;
-    height: 3rem; /* Set the height of the header div */
+    height: 3rem;
     color: #81AFDE;
 }
 #account-body {
@@ -192,28 +192,28 @@ dt {
 }
 
 #account-info {
-    margin-top: -3rem; /* Negative margin to move the div up and align it with the header */
+    margin-top: -3rem;
 }
 
 #edit-form {
     display: flex;
-    align-items: stretch; /* Align the label and input at the top */
+    align-items: stretch;
     margin-bottom: 1.5rem;
 }
 
     #edit-form label {
-        flex: 0 0 150px; /* Set a fixed width for the label */
+        flex: 0 0 150px;
         padding-right: 10px;
         text-align: left;
     }
 
 #edit-form-control {
-    flex: 1; /* Make the input take up the remaining space */
+    flex: 1;
     margin-bottom: 0;
 }
 
 select.form-select {
-    width: 100%; /* Make the select element take up the full width */
+    width: 100%;
 }
 .custom-btn {
     width: 150px;
@@ -227,4 +227,9 @@ select.form-select {
         background-color: #1d4a78;
         border-color: #1d4a78;
         color: lightslategrey;
-    }
+
+#order-total {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 2em;
+}

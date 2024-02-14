@@ -98,13 +98,12 @@ namespace TravelExpertsMVC.Controllers
                     CustomerManager.CreateCustomer(db, newCustomerData);
                     TempData["Message"] = $"Thank you for registering {newCustomerData.CustFirstName} {newCustomerData.CustLastName}!";
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    TempData["Message"] = "There was a problem with registering. Please try again later." + e.Message + e.InnerException.Message;
+                    TempData["Message"] = "There was a problem with registering. Please try again later.";
                     TempData["IsError"] = true;
                 }
-                //    return RedirectToAction("Login", "Customer");
-                return View();
+                return RedirectToAction("Login", "Account");
             }
             else
             {
@@ -115,17 +114,10 @@ namespace TravelExpertsMVC.Controllers
         //[HttpGet]
         public ActionResult Account()
         {
-            try
-            {
-                int? customerId = HttpContext.Session.GetInt32("CustomerId");
-                Customer customer = CustomerManager.GetCustomerData(db!, customerId);
-                return View(customer);
-            }
-            catch
-            {
-                return View();
-            }
-            
+            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            Customer customer = CustomerManager.GetCustomerData(db!, customerId);
+            return View(customer);
+
         }
 
         //[HttpGet]
