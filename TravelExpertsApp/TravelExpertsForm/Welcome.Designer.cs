@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Welcome));
             btnPackages = new Button();
             btnSuppliers = new Button();
             btnPackage = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnPackages
@@ -45,7 +48,7 @@
             // 
             // btnSuppliers
             // 
-            btnSuppliers.Location = new Point(527, 292);
+            btnSuppliers.Location = new Point(551, 292);
             btnSuppliers.Name = "btnSuppliers";
             btnSuppliers.Size = new Size(180, 70);
             btnSuppliers.TabIndex = 1;
@@ -55,7 +58,7 @@
             // 
             // btnPackage
             // 
-            btnPackage.Location = new Point(294, 292);
+            btnPackage.Location = new Point(318, 292);
             btnPackage.Name = "btnPackage";
             btnPackage.Size = new Size(170, 70);
             btnPackage.TabIndex = 2;
@@ -63,16 +66,29 @@
             btnPackage.UseVisualStyleBackColor = true;
             btnPackage.Click += btnPackage_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(273, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(283, 258);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
             // Welcome
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.RoyalBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox1);
             Controls.Add(btnPackage);
             Controls.Add(btnSuppliers);
             Controls.Add(btnPackages);
             Name = "Welcome";
             Text = "Welcome";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -81,5 +97,6 @@
         private Button btnPackages;
         private Button btnSuppliers;
         private Button btnPackage;
+        private PictureBox pictureBox1;
     }
 }
