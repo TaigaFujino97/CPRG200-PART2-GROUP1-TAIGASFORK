@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
+    <h3>Lets build something great together!</h3>
+    <img src="~/images/contactus.png" height="100px"/>
+    <div>
+        @foreach (var agency in Model)
+        {
+            <div class="card bg-body-tertiary" style="display: inline-block;vertical-align: middle;padding: 1rem 1rem;">
+                <p>Country: @agency.AgncyCountry</p>
+                <p>Province: @agency.AgncyProv</p>
+                <p>City: @agency.AgncyCity</p>
+                <p>Address: @agency.AgncyAddress</p>
+                <p>Postal Code: @agency.AgncyPostal</p>
+                <p>Phone: @agency.AgncyPhone</p>
+                <p>Fax: @agency.AgncyFax</p>
+            </div>
+        }
+    </div>
+</div>

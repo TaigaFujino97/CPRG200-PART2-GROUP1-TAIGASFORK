@@ -47,4 +47,7 @@ public partial class Booking
     [ForeignKey("TripTypeId")]
     [InverseProperty("Bookings")]
     public virtual TripType? TripType { get; set; }
+
+    [Column(TypeName = "money")]
+    public decimal? TotalPaid { get; set; }
 }

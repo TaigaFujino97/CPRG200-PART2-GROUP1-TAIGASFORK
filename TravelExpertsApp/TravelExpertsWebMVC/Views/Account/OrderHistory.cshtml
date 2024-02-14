@@ -1,7 +1,13 @@
 ﻿@model IEnumerable<TravelExpertsDB.Booking>
 
 @{
-    ViewData["Title"] = "OrderHistory";
+    ViewData["Title"] = "Order History";
+}
+@if (TempData["Message"] != null)
+{
+    <h4 class="@(TempData["IsError"] != null? "text-danger": "text-success")">
+        @TempData["Message"]
+    </h4>
 }
 <div class="infopage">
     <partial name="_AccountPartial" />
@@ -9,38 +15,56 @@
         <div id="account-header">
         <h1>Order History</h1>
         </div>
-        <div id="account-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            Booking ID
-                        </th>
-                        <th>
-                            Order Date
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
+        <table class="table border border-primary">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Package.PkgName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookingDate)
+                    </th>
+                    <th>
+                        Trip Type
+                    </th>
+                    <th>
+                        Outstanding Balance
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.BookingId)
+                                @Html.DisplayFor(modelItem => item.Package.PkgName)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.BookingDate)
                             </td>
                             <td>
-                                <a asp-action="OrderHistoryDetails" asp-route-id="@item.BookingId" class="btn btn-primary">Details</a>
+                                @Html.DisplayFor(modelItem => item.TripType.Ttname)
                             </td>
+                            <td>
+                                $@Html.DisplayFor(modelItem => item.Package.PkgBasePrice*(decimal)item.TravelerCount-item.TotalPaid)
+                            </td>
+                            @if (item.Package.PkgBasePrice * (decimal)item.TravelerCount - item.TotalPaid > 0)
+                            {
+                                <td>
+                                    <form asp-action="MakePayment" method="post">
+                                        <button name="bookingid" type="submit" class="btn btn-success" value=@item.BookingId>Make Payment</button>
+                                    </form>
+                                </td>
+                            }
+                            
                         </tr>
                     }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
+        
     </div>
 </div>
-
-
