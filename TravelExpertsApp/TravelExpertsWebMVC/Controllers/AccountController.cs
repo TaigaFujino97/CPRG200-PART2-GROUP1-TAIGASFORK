@@ -31,7 +31,7 @@ namespace TravelExpertsMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(Customer cust) // data collected from the form "user"
         {
-            Customer cst = CustomerManager.Authenticate(db, cust.CustEmail, cust.Password);
+            Customer? cst = CustomerManager.Authenticate(db, cust.CustEmail, cust.Password);
             if (cst == null) // if there are no matching username + password combinations
             {
                 TempData["LoginButtonClicked"] = true; // displays a warning message "password or username was incorrect".
@@ -125,8 +125,15 @@ namespace TravelExpertsMVC.Controllers
         public ActionResult OrderHistory()
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
-            Customer customer = CustomerManager.GetCustomerData(db!, customerId);
-            return View(customer.Bookings);
+            List<Booking> bookings = BookingDB.GetAllBookings(db!, customerId);
+            return View(bookings);
+        }
+        public ActionResult OrderHistoryDetails(int id)
+        {
+            OrderDB orderDb = new OrderDB();
+            OrderDTO order = orderDb.GetOrderDetails(db!, id);
+
+            return View(order);
         }
 
         //[HttpGet]

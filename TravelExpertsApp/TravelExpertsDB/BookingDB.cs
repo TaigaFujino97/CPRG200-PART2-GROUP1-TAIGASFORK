@@ -28,5 +28,11 @@ namespace TravelExpertsDB
             Booking booking = db.Bookings.FirstOrDefault(b => b.BookingId == bookingId);
             return booking;
         }
+
+        public static List<Booking> GetAllBookings(TravelExpertsContext db, int? customerId)
+        {
+            List<Booking> bookings = db.Bookings.Where(b => b.CustomerId == customerId).ToList();
+            return bookings;
+        }
     }
 }

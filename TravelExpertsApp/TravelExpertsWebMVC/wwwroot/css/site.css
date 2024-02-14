@@ -227,9 +227,19 @@ select.form-select {
         background-color: #1d4a78;
         border-color: #1d4a78;
         color: lightslategrey;
+    }
 
 #order-total {
     display: flex;
     justify-content: start;
     margin-bottom: 2em;
+}
+.table {
+    background-color: #cae3fc;
+}
+tr,
+thead,
+td,
+th {
+    background-color: #cae3fc !important;
 }
