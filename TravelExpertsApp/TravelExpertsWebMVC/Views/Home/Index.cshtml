@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@if (TempData["Message"] != null)
+{
+    <h4 class="@(TempData["IsError"] != null? "text-danger": "text-success") mt-5">
+        @TempData["Message"]
+    </h4>
+}
+<div class="text-center">
+    <div class="carousel-container">
+        <div id="carouselIndicators" class="carousel slide mt-5 mb-5" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner rounded-5">
+                <div class="carousel-item active">
+                    <img src="~/images/tropical.png" class="d-block w-100" alt="Fiji">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/croatia.png" class="d-block w-100" alt="Croatia">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/england.png" class="d-block w-100" alt="England">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/rome.png" class="d-block w-100" alt="Rome">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/lake.png" class="d-block w-100" alt="Canadian Rockies">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="carosol-overylay">
+            <img id="carosol-logo" src="~/images/logowtextwhite.png" />
+            <p id="carosol-text" class="text-light">Where dreams take flight</p>
+            <a asp-controller="Package" asp-action="Index" class="btn btn-primary mb-5">View Packages</a>
+        </div>
+    </div>
+</div>

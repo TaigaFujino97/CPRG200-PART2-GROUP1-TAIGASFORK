@@ -23,19 +23,30 @@ namespace TravelExpertsForm
         private void btnSuppliers_Click(object sender, EventArgs e)
         {
             SuppliersForm SuppliersForm = new SuppliersForm();
-            SuppliersForm.Show();
+            SuppliersForm.FormClosed += new FormClosedEventHandler(CloseForm);
+            this.Hide();
+            SuppliersForm.ShowDialog();
         }
 
         private void btnProds_Click(object sender, EventArgs e)
         {
             Products products = new Products();
-            products.Show();
+            products.FormClosed += new FormClosedEventHandler(CloseForm);
+            this.Hide();
+            products.ShowDialog();
         }
 
         private void btnPackage_Click(object sender, EventArgs e)
         {
             TravelPackageManager travelPackageManager = new TravelPackageManager();
-            travelPackageManager.Show();
+            travelPackageManager.FormClosed += new FormClosedEventHandler(CloseForm);
+            this.Hide();
+            travelPackageManager.ShowDialog();
+        }
+
+        private void CloseForm(object sender, EventArgs e)
+        {
+            this.Show();
         }
     }
 }

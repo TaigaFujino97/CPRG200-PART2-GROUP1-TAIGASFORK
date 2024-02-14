@@ -1,0 +1,80 @@
+﻿@using System.Globalization
+@model IEnumerable<TravelExpertsDB.Booking>
+
+@{
+    ViewData["Title"] = "Order History";
+}
+@if (TempData["Message"] != null)
+{
+    <h4 class="@(TempData["IsError"] != null? "text-danger": "text-success")">
+        @TempData["Message"]
+    </h4>
+}
+<div class="infopage">
+    <partial name="_AccountPartial" />
+    <div id="account-info" class="container-fluid mt-5">
+        <div id="account-header">
+        <h1>Order History</h1>
+        </div>
+        <div id="account-body">
+            <table class="table" id="order-table">
+                <thead id="order-table">
+                    <tr>
+                        <th>
+                            Package Name
+                        </th>
+                        <th>
+                            Booking Date
+                        </th>
+                        <th>
+                            Trip Type
+                        </th>
+                        <th>
+                            Outstanding Balance
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="order-table">
+                    @if (Model != null)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Package.PkgName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BookingDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TripType.Ttname)
+                                </td>
+                                <td>
+                                    @{
+                                        item.TotalPaid ??= 0;
+                                        decimal balance = (decimal)item.Package.PkgBasePrice * (decimal)item.TravelerCount - (decimal)item.TotalPaid;
+                                        var format = balance.ToString("C", CultureInfo.CurrentCulture);
+                                    }
+                                    @format
+                                </td>
+                                @if (item.Package.PkgBasePrice * (decimal)item.TravelerCount - item.TotalPaid > 0)
+                                {
+                                    <td>
+                                        <form asp-action="MakePayment" method="post">
+                                            <button name="bookid" type="submit" class="btn btn-primary" value=@item.BookingId>Make Payment</button>
+                                        </form>
+                                    </td>
+                                }
+                                <td>
+                                    <a asp-action="OrderHistoryDetails" asp-route-id="@item.BookingId" class="btn btn-primary">Booking Details</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

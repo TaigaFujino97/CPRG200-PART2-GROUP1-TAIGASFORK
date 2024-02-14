@@ -1,0 +1,88 @@
+@model PrebookingViewModel
+
+@{
+    ViewData["Title"] = "Book";
+}
+
+<h1 class="mt-5">Book Package</h1>
+
+<div>
+    <h4>Package Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Package Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PkgName)
+        </dd>
+        <dt class = "col-sm-2">
+            Start Date:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PkgStartDate)
+        </dd>
+        <dt class = "col-sm-2">
+            End Date:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PkgEndDate)
+        </dd>
+        <dt class = "col-sm-2">
+            Description:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PkgDesc)
+        </dd>
+        <dt class = "col-sm-2">
+            Price:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PkgBasePrice) per traveler
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateBooking" method="post">
+            @Html.HiddenFor(model => model.PkgStartDate)
+            @Html.HiddenFor(model => model.PackageId)
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Number of travelers<span class="text-danger">   *required</span></label>
+                <input asp-for="TravelerCount" class="form-control" id="uxCount" />
+                <span asp-validation-for="TravelerCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Trip type</label>
+                @Html.DropDownListFor(model => model.TripTypeId, ViewBag.Types as SelectList, "Optional", new { @class = "form-select rounded", @id = "ux2"})
+            </div>
+            <br /><hr />
+
+            <div id="uxDisplay">
+                @await Component.InvokeAsync("PrebookingPrice", new {basePrice = @Model.PkgBasePrice, numTravel = 1})
+            </div>
+            <div class="form-group mt-5">
+                <a asp-action="Index" class="btn btn-light me-3">Back</a>
+                <input type="submit" value="Confirm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#uxCount").change(function () {
+                var count = $("#uxCount").val(); // value from the select element
+                $.ajax({
+                    method: 'POST',
+                    url: "/Package/ChangeNum",
+                    data: { baseP : @Model.PkgBasePrice, numT : count }
+                }).done(function (result, statusText, xhdr) {
+                    $("#uxDisplay").html(result);
+                });
+            });
+        });
+    </script>
+}

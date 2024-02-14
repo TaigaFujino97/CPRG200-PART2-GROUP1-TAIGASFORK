@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TravelExpertsDB.Package>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mt-5">Packages</h1>
+<hr />
+@foreach (var item in Model)
+{
+    <div class="card mb-5" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="~/images/@(item.PackageId)image.jpg" class="img-fluid rounded-4" alt="Package Image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title text-decoration-underline">
+                        @Html.DisplayFor(modelItem => item.PkgName)
+                    </h4>
+                    <p class="card-text">
+                        <small>
+                            @Html.DisplayFor(modelItem => item.PkgDesc)
+                        </small>
+                    </p>
+                    <p class="card-text">
+                        Start Date: @Html.DisplayFor(modelItem => item.PkgStartDate)
+                        <br />
+                        End Date: @Html.DisplayFor(modelItem => item.PkgEndDate)
+                        <br /> 
+                        <a asp-action="Book" class="btn btn-sm btn-primary rounded-2 mt-2" asp-route-id="@item.PackageId">Book now</a>
+                    </p>
+                    <div id="price-display">
+                        <h5 class="card-text text-end">@Html.DisplayFor(modelItem => item.PkgBasePrice)</h5>
+                        <p class="card-text text-end"><small class="text-muted">*not including taxes & fees</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
