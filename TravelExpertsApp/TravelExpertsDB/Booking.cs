@@ -26,7 +26,7 @@ public partial class Booking
     [Required(ErrorMessage = "Please enter the number of travellers on your trip")]
     public double? TravelerCount { get; set; }
 
-    public int? CustomerId { get; set; }
+    public int CustomerId { get; set; }
 
     [StringLength(1)]
     public string? TripTypeId { get; set; }

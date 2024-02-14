@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TravelExpertsDB.Booking>
+﻿@using System.Globalization
+@model IEnumerable<TravelExpertsDB.Booking>
 
 @{
     ViewData["Title"] = "Order History";
@@ -19,10 +20,10 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Package.PkgName)
+                        Package Name
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.BookingDate)
+                        Booking Date
                     </th>
                     <th>
                         Trip Type
@@ -49,13 +50,18 @@
                                 @Html.DisplayFor(modelItem => item.TripType.Ttname)
                             </td>
                             <td>
-                                $@Html.DisplayFor(modelItem => item.Package.PkgBasePrice*(decimal)item.TravelerCount-item.TotalPaid)
+                                @{
+                                    item.TotalPaid ??= 0;
+                                    decimal balance = (decimal)item.Package.PkgBasePrice * (decimal)item.TravelerCount - (decimal)item.TotalPaid;
+                                    var format = balance.ToString("C",CultureInfo.CurrentCulture);
+                                }
+                                @format
                             </td>
                             @if (item.Package.PkgBasePrice * (decimal)item.TravelerCount - item.TotalPaid > 0)
                             {
                                 <td>
                                     <form asp-action="MakePayment" method="post">
-                                        <button name="bookingid" type="submit" class="btn btn-success" value=@item.BookingId>Make Payment</button>
+                                        <button name="bookid" type="submit" class="btn btn-success" value=@item.BookingId>Make Payment</button>
                                     </form>
                                 </td>
                             }

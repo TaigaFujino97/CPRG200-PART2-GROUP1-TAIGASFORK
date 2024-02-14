@@ -18,4 +18,12 @@ public partial class TripType
 
     [InverseProperty("TripType")]
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+    public override string ToString()
+    {
+        if(Ttname != null)
+        {
+            return Ttname;
+        }
+        return base.ToString();
+    }
 }

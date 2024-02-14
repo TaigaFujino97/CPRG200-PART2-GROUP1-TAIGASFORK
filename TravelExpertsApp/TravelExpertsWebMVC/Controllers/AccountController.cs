@@ -6,6 +6,7 @@ using TravelExpertsDB;
 using Humanizer.Localisation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using TravelExpertsWebMVC.Models;
 
 namespace TravelExpertsMVC.Controllers
 {
@@ -124,7 +125,7 @@ namespace TravelExpertsMVC.Controllers
         // Please use the same format as "Account.cshtml". Just replace the content inside of div id="account-info" to keep the style consistent.
         public ActionResult OrderHistory()
         {
-            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            int customerId = (int)HttpContext.Session.GetInt32("CustomerId");
             List<Booking> bookings = BookingDB.GetAllBookings(db!, customerId);
             return View(bookings);
         }
@@ -134,6 +135,17 @@ namespace TravelExpertsMVC.Controllers
             OrderDTO order = orderDb.GetOrderDetails(db!, id);
 
             return View(order);
+        }
+        [HttpPost]
+        public ActionResult MakePayment(int? bookid)
+        {
+            BookingPaymentViewModel model = new();
+            Booking booking = BookingDB.FindBooking(db, bookid);
+            model.PkgName = booking.Package.PkgName;
+            model.BookingDate = booking.BookingDate;
+            booking.TotalPaid ??= 0;
+            model.Balance = (decimal)booking.Package.PkgBasePrice * (decimal)booking.TravelerCount - booking.TotalPaid;
+            return View(model);
         }
 
         //[HttpGet]
