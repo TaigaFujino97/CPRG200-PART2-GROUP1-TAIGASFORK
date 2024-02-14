@@ -247,3 +247,14 @@ td,
 th {
     background-color: #cae3fc !important;
 }
+
+.card-title {
+    color: #1d4a78 !important;
+}
+
+.card {
+    border-width: 5px;
+    border-color: #81AFDE;
+    border-radius: 2em;
+    padding: 0.5em;
+}
