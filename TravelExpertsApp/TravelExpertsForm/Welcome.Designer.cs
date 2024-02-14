@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Welcome));
             btnPackages = new Button();
             btnSuppliers = new Button();
             btnPackage = new Button();
             btnAgents = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel1.SuspendLayout();
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnPackages
@@ -119,6 +116,5 @@
         private Button btnPackage;
         private Button btnAgents;
         private TableLayoutPanel tableLayoutPanel1;
-        private PictureBox pictureBox1;
     }
 }
