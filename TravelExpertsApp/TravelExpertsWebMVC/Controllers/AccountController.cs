@@ -194,7 +194,7 @@ namespace TravelExpertsMVC.Controllers
             ModelState.Remove("CustEmail");
             ModelState.Remove("Agent");
             string newPassword = withNewPassword.Password;
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
