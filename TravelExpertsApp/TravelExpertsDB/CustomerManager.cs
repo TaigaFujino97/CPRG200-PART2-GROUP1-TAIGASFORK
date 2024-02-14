@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -112,5 +113,6 @@ namespace TravelExpertsDB
             var cust = db.Customers.SingleOrDefault(cst => cst.CustomerId == id);
             return cust;
         }
+
     }
 }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\images\contactus.png" />
   </ItemGroup>
 
   <ItemGroup>

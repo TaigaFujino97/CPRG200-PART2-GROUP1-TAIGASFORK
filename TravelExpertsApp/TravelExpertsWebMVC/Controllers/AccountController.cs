@@ -117,13 +117,16 @@ namespace TravelExpertsMVC.Controllers
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
             Customer customer = CustomerManager.GetCustomerData(db!, customerId);
             return View(customer);
+
         }
 
         //[HttpGet]
         // Please use the same format as "Account.cshtml". Just replace the content inside of div id="account-info" to keep the style consistent.
         public ActionResult OrderHistory()
         {
-            return View();
+            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            Customer customer = CustomerManager.GetCustomerData(db!, customerId);
+            return View(customer.Bookings);
         }
 
         //[HttpGet]
