@@ -4,38 +4,38 @@
     ViewData["Title"] = "Book";
 }
 
-<h1>Book</h1>
+<h1 class="mt-5">Book Package</h1>
 
 <div>
-    <h4>Package</h4>
+    <h4>Package Details</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PkgName)
+            Package Name:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PkgName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PkgStartDate)
+            Start Date:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PkgStartDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PkgEndDate)
+            End Date:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PkgEndDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PkgDesc)
+            Description:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PkgDesc)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PkgBasePrice)
+            Price:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PkgBasePrice)
@@ -43,6 +43,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
-    <a asp-action="CreateBooking">Continue</a>
+    <a asp-action="Index" class="btn btn-light me-3">Back</a>
+    <a asp-action="CreateBooking" class="btn btn-primary">Continue</a>
 </div>

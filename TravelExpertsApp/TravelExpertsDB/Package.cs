@@ -15,12 +15,12 @@ public partial class Package
     public string PkgName { get; set; } = null!;
 
     [Column(TypeName = "datetime")]
-    [Display(Name = "Price")]
+    [Display(Name = "Start Date")]
     [DisplayFormat(DataFormatString = "{0:d}")]
     public DateTime? PkgStartDate { get; set; }
 
     [Column(TypeName = "datetime")]
-    [Display(Name = "Price")]
+    [Display(Name = "End Date")]
     [DisplayFormat(DataFormatString = "{0:d}")]
     public DateTime? PkgEndDate { get; set; }
 

@@ -103,7 +103,7 @@ namespace TravelExpertsMVC.Controllers
                     TempData["Message"] = "There was a problem with registering. Please try again later.";
                     TempData["IsError"] = true;
                 }
-                return RedirectToAction("Login", "Customer");
+                return RedirectToAction("Login", "Account");
             }
             else
             {

@@ -4,25 +4,23 @@
     ViewData["Title"] = "CreateBooking";
 }
 
-<h1>CreateBooking</h1>
-
-<h4>Booking</h4>
+<h1 class="mt-5">Booking Details</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreateBooking">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label class="control-label">Travellers</label>
+                <label class="control-label">Number of travellers<span class="text-danger">   *required</span></label>
                 <input asp-for="TravelerCount" class="form-control" />
                 <span asp-validation-for="TravelerCount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Trip type</label>
-                <select asp-for="TripTypeId" asp-items=@ViewBag.Types class="form-control" />
-                <span asp-validation-for="TripTypeId" class="text-danger"></span>
+                @Html.DropDownListFor(model => model.TripTypeId, ViewBag.Types as SelectList, "Optional", new { @class = "form-select rounded" })
             </div>
-            <div class="form-group">
+            <div class="form-group mt-5">
+                <a asp-action="Index" class="btn btn-light me-3">Back</a>
                 <input type="submit" value="Confirm" class="btn btn-primary" />
             </div>
         </form>
@@ -30,7 +28,7 @@
 </div>
 
 <div>
-    <a asp-action="Index" class="btn btn-primary">Back</a>
+
 </div>
 
 @section Scripts {
