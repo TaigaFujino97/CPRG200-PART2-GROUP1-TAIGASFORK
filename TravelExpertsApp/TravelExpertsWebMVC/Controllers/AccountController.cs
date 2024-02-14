@@ -188,7 +188,7 @@ namespace TravelExpertsMVC.Controllers
                     TempData["Message"] = "There was a problem with updating your account. Please try again later.";
                     TempData["IsError"] = true;
                 }
-                return RedirectToAction("Account", "Customer");
+                return RedirectToAction("Account", "Account");
             }
             else
             {
