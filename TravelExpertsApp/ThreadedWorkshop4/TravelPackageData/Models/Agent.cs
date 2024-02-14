@@ -37,10 +37,4 @@ public partial class Agent
 
     [InverseProperty("Agent")]
     public virtual ICollection<Customer> Customers { get; set; } = new List<Customer>();
-
-    public override string ToString()
-    {
-        string solution = AgtLastName + ", " + AgtFirstName;
-        return solution.PadRight(30) + AgtBusPhone.PadRight(30) + AgtEmail.PadRight(30);
-    }
 }
