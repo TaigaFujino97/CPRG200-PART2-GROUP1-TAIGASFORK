@@ -230,7 +230,7 @@ namespace TravelExpertsMVC.Controllers
                     return View();
                 }
             }
-            return RedirectToAction("Account", "Customer");
+            return RedirectToAction("Account", "Account");
         }
     }
 }
