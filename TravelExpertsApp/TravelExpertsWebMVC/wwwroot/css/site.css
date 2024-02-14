@@ -234,6 +234,10 @@ select.form-select {
     justify-content: start;
     margin-bottom: 2em;
 }
+#order-table{
+    border-color: white;
+}
+
 .table {
     background-color: #cae3fc;
 }

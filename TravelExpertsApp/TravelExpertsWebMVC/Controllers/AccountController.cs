@@ -85,7 +85,7 @@ namespace TravelExpertsMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(Customer newCustomerData)
+        public async Task<ActionResult> Register(Customer newCustomerData)
         {
             if (CustomerManager.EmailExists(db, newCustomerData.CustEmail))
             {
@@ -98,13 +98,16 @@ namespace TravelExpertsMVC.Controllers
                 {
                     CustomerManager.CreateCustomer(db, newCustomerData);
                     TempData["Message"] = $"Thank you for registering {newCustomerData.CustFirstName} {newCustomerData.CustLastName}!";
+
+                    // Log in the user after successful registration
+                    await LoginAsync(newCustomerData);
                 }
                 catch (Exception)
                 {
                     TempData["Message"] = "There was a problem with registering. Please try again later.";
                     TempData["IsError"] = true;
                 }
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -125,9 +128,16 @@ namespace TravelExpertsMVC.Controllers
         // Please use the same format as "Account.cshtml". Just replace the content inside of div id="account-info" to keep the style consistent.
         public ActionResult OrderHistory()
         {
-            int customerId = (int)HttpContext.Session.GetInt32("CustomerId");
-            List<Booking> bookings = BookingDB.GetAllBookings(db!, customerId);
-            return View(bookings);
+            int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            if(customerId != null)
+            {
+                List<Booking> bookings = BookingDB.GetAllBookings(db!, (int)customerId);
+                return View(bookings);
+            }
+            else
+            {
+                return View();
+            }
         }
         public ActionResult OrderHistoryDetails(int id)
         {

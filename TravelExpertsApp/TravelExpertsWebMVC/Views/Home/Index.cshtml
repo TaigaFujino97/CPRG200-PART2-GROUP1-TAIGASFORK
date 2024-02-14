@@ -1,7 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@if (TempData["Message"] != null)
+{
+    <h4 class="@(TempData["IsError"] != null? "text-danger": "text-success") mt-5">
+        @TempData["Message"]
+    </h4>
+}
 <div class="text-center">
     <div class="carousel-container">
         <div id="carouselIndicators" class="carousel slide mt-5 mb-5" data-bs-ride="true">

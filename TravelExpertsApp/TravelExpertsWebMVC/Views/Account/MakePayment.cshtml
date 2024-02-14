@@ -16,7 +16,7 @@
         <div id="account-header">
             <h1>Make Payment</h1>
         </div>
-        <dl class="row">
+        <dl class="row" id="account-body">
             <dt class="col-sm-2">
                 Package Name:
             </dt>
@@ -36,6 +36,9 @@
                 @Html.DisplayFor(model => model.Balance)
             </dd>
         </dl>
-        
+        <div>
+            <a asp-action="OrderHistory" class="btn btn-light">Back</a>
+            <a class="btn btn-primary">Pay</a>
+        </div>
     </div>
 </div>
