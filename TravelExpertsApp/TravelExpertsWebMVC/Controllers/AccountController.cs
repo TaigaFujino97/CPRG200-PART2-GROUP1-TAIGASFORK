@@ -47,7 +47,8 @@ namespace TravelExpertsMVC.Controllers
             List<Claim> claims = new List<Claim>
             {
                 new Claim("Email", cst.CustEmail),
-                new Claim(ClaimTypes.Name, cst.CustFirstName)
+                new Claim(ClaimTypes.Name, cst.CustFirstName),
+                new Claim(ClaimTypes.NameIdentifier, cst.CustomerId.ToString())
             };
             // 2. create claims identity
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
@@ -119,6 +120,14 @@ namespace TravelExpertsMVC.Controllers
         public ActionResult Account()
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
+            if (customerId == null)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    customerId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                    HttpContext.Session.SetInt32("CustomerId", Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+                }
+            }
             Customer customer = CustomerManager.GetCustomerData(db!, customerId);
             return View(customer);
 
@@ -188,7 +197,7 @@ namespace TravelExpertsMVC.Controllers
                     TempData["Message"] = "There was a problem with updating your account. Please try again later.";
                     TempData["IsError"] = true;
                 }
-                return RedirectToAction("Account", "Customer");
+                return RedirectToAction("Account", "Account");
             }
             else
             {
@@ -230,7 +239,7 @@ namespace TravelExpertsMVC.Controllers
                     return View();
                 }
             }
-            return RedirectToAction("Account", "Customer");
+            return RedirectToAction("Account", "Account");
         }
     }
 }

@@ -45,6 +45,7 @@ namespace TravelExpertsDB
         public static List<Booking> GetAllBookings(TravelExpertsContext db, int customerId)
         {
             List<Booking> bookings = db.Bookings.Include(b => b.Package).Include(b => b.TripType).Where(b => b.CustomerId == customerId).OrderByDescending(b => b.BookingDate).ToList();
+            Console.WriteLine(bookings);
             return bookings;
         }
 
