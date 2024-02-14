@@ -33,14 +33,19 @@
             btnSuppliers = new Button();
             btnPackage = new Button();
             pictureBox1 = new PictureBox();
+            btnAgents = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // btnPackages
             // 
-            btnPackages.Location = new Point(91, 292);
+            btnPackages.Location = new Point(3, 3);
             btnPackages.Name = "btnPackages";
-            btnPackages.Size = new Size(144, 70);
+            btnPackages.Size = new Size(227, 79);
             btnPackages.TabIndex = 0;
             btnPackages.Text = "&Products";
             btnPackages.UseVisualStyleBackColor = true;
@@ -48,9 +53,9 @@
             // 
             // btnSuppliers
             // 
-            btnSuppliers.Location = new Point(551, 292);
+            btnSuppliers.Location = new Point(469, 3);
             btnSuppliers.Name = "btnSuppliers";
-            btnSuppliers.Size = new Size(180, 70);
+            btnSuppliers.Size = new Size(227, 79);
             btnSuppliers.TabIndex = 1;
             btnSuppliers.Text = "&Suppliers";
             btnSuppliers.UseVisualStyleBackColor = true;
@@ -58,9 +63,9 @@
             // 
             // btnPackage
             // 
-            btnPackage.Location = new Point(318, 292);
+            btnPackage.Location = new Point(236, 3);
             btnPackage.Name = "btnPackage";
-            btnPackage.Size = new Size(170, 70);
+            btnPackage.Size = new Size(227, 79);
             btnPackage.TabIndex = 2;
             btnPackage.Text = "P&ackages";
             btnPackage.UseVisualStyleBackColor = true;
@@ -68,27 +73,73 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(273, 12);
+            pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(283, 258);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.Size = new Size(935, 355);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
+            // 
+            // btnAgents
+            // 
+            btnAgents.Location = new Point(702, 3);
+            btnAgents.Name = "btnAgents";
+            btnAgents.Size = new Size(230, 79);
+            btnAgents.TabIndex = 4;
+            btnAgents.Text = "&Agents";
+            btnAgents.UseVisualStyleBackColor = true;
+            btnAgents.Click += btnAgents_Click;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.Controls.Add(btnPackages, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnAgents, 3, 0);
+            tableLayoutPanel1.Controls.Add(btnPackage, 1, 0);
+            tableLayoutPanel1.Controls.Add(btnSuppliers, 2, 0);
+            tableLayoutPanel1.Location = new Point(3, 364);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(935, 85);
+            tableLayoutPanel1.TabIndex = 5;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 0, 1);
+            tableLayoutPanel2.Controls.Add(pictureBox1, 0, 0);
+            tableLayoutPanel2.Location = new Point(12, 12);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.Size = new Size(941, 452);
+            tableLayoutPanel2.TabIndex = 6;
             // 
             // Welcome
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RoyalBlue;
-            ClientSize = new Size(800, 450);
-            Controls.Add(pictureBox1);
-            Controls.Add(btnPackage);
-            Controls.Add(btnSuppliers);
-            Controls.Add(btnPackages);
+            ClientSize = new Size(965, 476);
+            Controls.Add(tableLayoutPanel2);
+            MaximumSize = new Size(983, 523);
+            MinimumSize = new Size(983, 523);
             Name = "Welcome";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Welcome";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -98,5 +149,8 @@
         private Button btnSuppliers;
         private Button btnPackage;
         private PictureBox pictureBox1;
+        private Button btnAgents;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
     }
 }
