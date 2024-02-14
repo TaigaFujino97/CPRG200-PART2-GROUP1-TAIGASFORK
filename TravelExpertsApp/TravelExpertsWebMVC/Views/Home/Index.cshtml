@@ -1,7 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@if (TempData["Message"] != null)
+{
+    <h4 class="@(TempData["IsError"] != null? "text-danger": "text-success") mt-5">
+        @TempData["Message"]
+    </h4>
+}
 <div class="text-center">
     <div class="carousel-container">
         <div id="carouselIndicators" class="carousel slide mt-5 mb-5" data-bs-ride="true">
@@ -12,7 +17,7 @@
                 <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
             </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner rounded-5">
                 <div class="carousel-item active">
                     <img src="~/images/tropical.png" class="d-block w-100" alt="Fiji">
                 </div>
