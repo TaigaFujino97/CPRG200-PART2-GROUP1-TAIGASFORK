@@ -47,6 +47,7 @@ namespace TravelExpertsWebMVC.Controllers
                     viewModel.CustomerId = (int)customerId;
                     List<TripType> types = BookingDB.GetTripTypes(db!);
                     ViewBag.Types = new SelectList(types);
+                    viewModel.TripTypeId = types.FirstOrDefault()?.Ttname.Substring(0, 1);
                     return View(viewModel); // return the slipid to the post method
 
                 }
@@ -59,8 +60,6 @@ namespace TravelExpertsWebMVC.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        [Authorize]
-
         [HttpPost]
         [Authorize]
         public ActionResult CreateBooking(PrebookingViewModel viewModel)
@@ -68,9 +67,10 @@ namespace TravelExpertsWebMVC.Controllers
             if (viewModel.TravelerCount != null && viewModel.TravelerCount > 0)
             {
                 int? customerId = HttpContext.Session.GetInt32("CustomerId");
-                Booking booking = BookingDB.CreateBooking((int)customerId, viewModel.PackageId, (int)viewModel.TravelerCount);
+                Booking booking = BookingDB.CreateBooking((int)customerId, viewModel.PackageId, (int)viewModel.TravelerCount, viewModel.TripTypeId);
                 BookingDB.SaveBooking(db, booking);
-                return RedirectToAction("OrderHistory", "Account");
+                int bookingId = booking.BookingId;
+                return RedirectToAction("Confirmation", "Package", new { id = bookingId });
             }
             else
             {
@@ -78,6 +78,12 @@ namespace TravelExpertsWebMVC.Controllers
             }
         }
 
+        public ActionResult Confirmation(int id)
+        {
+            OrderDB orderDb = new OrderDB();
+            OrderDTO order = orderDb.GetOrderDetails(db, id);
+            return View(order);
+        }
 
         [HttpPost]
         [Authorize]
