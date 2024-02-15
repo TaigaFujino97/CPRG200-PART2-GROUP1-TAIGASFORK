@@ -182,7 +182,6 @@ namespace TravelExpertsMVC.Controllers
             {
                 try
                 {
-                    Console.WriteLine("BOOKING ID: " + model.BookingId);
                     Booking booking = BookingDB.FindBooking(db, model.BookingId);
                     if (booking.TotalPaid == null) booking.TotalPaid = 0;
                     booking.TotalPaid += model.Payment;
