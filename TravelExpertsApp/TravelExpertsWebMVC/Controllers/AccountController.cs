@@ -7,7 +7,6 @@ using Humanizer.Localisation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using TravelExpertsWebMVC.Models;
-using Microsoft.AspNetCore.Connections.Features;
 
 namespace TravelExpertsMVC.Controllers
 {
@@ -48,8 +47,7 @@ namespace TravelExpertsMVC.Controllers
             List<Claim> claims = new List<Claim>
             {
                 new Claim("Email", cst.CustEmail),
-                new Claim(ClaimTypes.Name, cst.CustFirstName),
-                new Claim(ClaimTypes.NameIdentifier, cst.CustomerId.ToString())
+                new Claim(ClaimTypes.Name, cst.CustFirstName)
             };
             // 2. create claims identity
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
@@ -61,7 +59,7 @@ namespace TravelExpertsMVC.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 claimsPricipal);
             // redirect to the protected page that initiated the login sequence if defined
-            string? returnUrl = "/Account/Account";//TempData["ReturnUrl"]?.ToString();
+            string? returnUrl = TempData["ReturnUrl"]?.ToString();
             if (string.IsNullOrEmpty(returnUrl)) // if not return URL
             {
                 return RedirectToAction("Index", "Home"); // Return to the Home page
@@ -121,14 +119,6 @@ namespace TravelExpertsMVC.Controllers
         public ActionResult Account()
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
-            if (customerId == null)
-            {
-                if (User.Identity.IsAuthenticated)
-                {
-                    customerId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-                    HttpContext.Session.SetInt32("CustomerId", Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value));
-                }
-            }
             Customer customer = CustomerManager.GetCustomerData(db!, customerId);
             return View(customer);
         }
@@ -162,43 +152,9 @@ namespace TravelExpertsMVC.Controllers
             Booking booking = BookingDB.FindBooking(db, bookid);
             model.PkgName = booking.Package.PkgName;
             model.BookingDate = booking.BookingDate;
-            model.BookingId = booking.BookingId; 
             booking.TotalPaid ??= 0;
             model.Balance = (decimal)booking.Package.PkgBasePrice * (decimal)booking.TravelerCount - booking.TotalPaid;
             return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ConfirmPayment(BookingPaymentViewModel model)
-        {
-            if (model.Payment > model.Balance)
-            {
-                ModelState.AddModelError("Payment", $"You cannot make a payment larger than the balance.");
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    Booking booking = BookingDB.FindBooking(db, model.BookingId);
-                    if (booking.TotalPaid == null) booking.TotalPaid = 0;
-                    booking.TotalPaid += model.Payment;
-                    db.SaveChanges();
-
-
-                }
-                catch (Exception e)
-                {
-                    TempData["Message"] = "There was a problem with payment. Please try again later.";
-                    TempData["IsError"] = true;
-                }
-                return RedirectToAction("OrderHistory", "Account");
-            }
-            else
-            {
-                return View("MakePayment", model);
-            }
         }
 
         //[HttpGet]
