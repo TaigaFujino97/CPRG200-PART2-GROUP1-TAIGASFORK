@@ -61,7 +61,7 @@ namespace TravelExpertsMVC.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 claimsPricipal);
             // redirect to the protected page that initiated the login sequence if defined
-            string? returnUrl = TempData["ReturnUrl"]?.ToString();
+            string? returnUrl = "/Account/Account";//TempData["ReturnUrl"]?.ToString();
             if (string.IsNullOrEmpty(returnUrl)) // if not return URL
             {
                 return RedirectToAction("Index", "Home"); // Return to the Home page
