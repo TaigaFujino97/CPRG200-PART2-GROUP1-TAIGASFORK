@@ -7,6 +7,7 @@ using Humanizer.Localisation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using TravelExpertsWebMVC.Models;
+using Microsoft.AspNetCore.Connections.Features;
 
 namespace TravelExpertsMVC.Controllers
 {
@@ -162,9 +163,44 @@ namespace TravelExpertsMVC.Controllers
             Booking booking = BookingDB.FindBooking(db, bookid);
             model.PkgName = booking.Package.PkgName;
             model.BookingDate = booking.BookingDate;
+            model.BookingId = booking.BookingId; 
             booking.TotalPaid ??= 0;
             model.Balance = (decimal)booking.Package.PkgBasePrice * (decimal)booking.TravelerCount - booking.TotalPaid;
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ConfirmPayment(BookingPaymentViewModel model)
+        {
+            if (model.Payment > model.Balance)
+            {
+                ModelState.AddModelError("Payment", $"You cannot make a payment larger than the balance.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Console.WriteLine("BOOKING ID: " + model.BookingId);
+                    Booking booking = BookingDB.FindBooking(db, model.BookingId);
+                    if (booking.TotalPaid == null) booking.TotalPaid = 0;
+                    booking.TotalPaid += model.Payment;
+                    db.SaveChanges();
+
+
+                }
+                catch (Exception e)
+                {
+                    TempData["Message"] = "There was a problem with payment. Please try again later.";
+                    TempData["IsError"] = true;
+                }
+                return RedirectToAction("OrderHistory", "Account");
+            }
+            else
+            {
+                return View("MakePayment", model);
+            }
         }
 
         //[HttpGet]
