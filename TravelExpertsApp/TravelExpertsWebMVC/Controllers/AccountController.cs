@@ -121,7 +121,6 @@ namespace TravelExpertsMVC.Controllers
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
             Customer customer = CustomerManager.GetCustomerData(db!, customerId);
             return View(customer);
-
         }
 
         //[HttpGet]
