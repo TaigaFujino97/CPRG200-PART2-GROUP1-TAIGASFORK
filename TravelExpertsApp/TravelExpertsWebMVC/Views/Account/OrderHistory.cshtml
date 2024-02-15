@@ -27,10 +27,10 @@
                             Booking Date
                         </th>
                         <th>
-                            Trip Type
+                            Package Price
                         </th>
                         <th>
-                            Outstanding Balance
+                            Remaining Balance
                         </th>
                         <th></th>
                         <th></th>
@@ -49,7 +49,11 @@
                                     @Html.DisplayFor(modelItem => item.BookingDate)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.TripType.Ttname)
+                                    @{
+                                        decimal obalance = (decimal)item.Package.PkgBasePrice * (decimal)item.TravelerCount;
+                                        var oformat = obalance.ToString("C", CultureInfo.CurrentCulture);
+                                    }
+                                    @oformat
                                 </td>
                                 <td>
                                     @{
@@ -59,6 +63,9 @@
                                     }
                                     @format
                                 </td>
+                                <td>
+                                    <a asp-action="OrderHistoryDetails" asp-route-id="@item.BookingId" class="btn btn-primary">Booking Details</a>
+                                </td>
                                 @if (item.Package.PkgBasePrice * (decimal)item.TravelerCount - item.TotalPaid > 0)
                                 {
                                     <td>
@@ -67,9 +74,7 @@
                                         </form>
                                     </td>
                                 }
-                                <td>
-                                    <a asp-action="OrderHistoryDetails" asp-route-id="@item.BookingId" class="btn btn-primary">Booking Details</a>
-                                </td>
+                                
                             </tr>
                         }
                     }
