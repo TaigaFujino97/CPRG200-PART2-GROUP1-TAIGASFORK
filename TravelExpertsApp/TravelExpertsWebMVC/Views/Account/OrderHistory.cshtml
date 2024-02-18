@@ -53,6 +53,7 @@
                         </th>
                         <th></th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="order-table">
@@ -93,6 +94,9 @@
                                         </form>
                                     </td>
                                 }
+                                <td>
+                                    <a asp-action="CancelBooking" asp-route-id="@item.BookingId" class="btn btn-danger">Cancel Booking</a>
+                                </td>
                                 
                             </tr>
                         }

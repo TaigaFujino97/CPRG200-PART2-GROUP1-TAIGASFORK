@@ -156,6 +156,48 @@ namespace TravelExpertsMVC.Controllers
 
             return View(order);
         }
+
+        public ActionResult CancelBooking(int id)
+        {
+            OrderDB orderDb = new OrderDB();
+            OrderDTO order = orderDb.GetOrderDetails(db!, id);
+
+            return View(order);
+        }
+
+        [HttpPost]
+        public ActionResult CancelBooking(int? bookid)
+        {
+            if(bookid == null)
+            {
+                TempData["Message"] = "Could not find the booking. Please try again.";
+                TempData["IsError"] = true;
+                return RedirectToAction("OrderHistory", "Account");
+            }
+            int bookingId = bookid.Value;
+
+            Booking booking = BookingDB.FindBooking(db!, bookingId);
+            if(booking == null)
+            {
+                TempData["Message"] = "Could not find the booking. Please try again.";
+                TempData["IsError"] = true;
+                return RedirectToAction("OrderHistory", "Account");
+            }
+
+            bool success = BookingDB.DeleteBooking(db!, booking);
+
+            if(success == true)
+            {
+                TempData["Message"] = $"Booking {bookingId} has been successfully cancelled.";
+                return RedirectToAction("OrderHistory", "Account");
+            }
+            else
+            {
+                TempData["Message"] = "There was a problem with cancelling. Please try again later.";
+                TempData["IsError"] = true;
+            }
+            return View();
+        }
         [HttpPost]
         public ActionResult MakePayment(int? bookid)
         {
@@ -176,6 +218,11 @@ namespace TravelExpertsMVC.Controllers
             if (model.Payment > model.Balance)
             {
                 ModelState.AddModelError("Payment", $"You cannot make a payment larger than the balance.");
+            }
+
+            if (model.Payment <= 0)
+            {
+                ModelState.AddModelError("Payment", $"Payments must be greater than 0.");
             }
 
             if (ModelState.IsValid)
