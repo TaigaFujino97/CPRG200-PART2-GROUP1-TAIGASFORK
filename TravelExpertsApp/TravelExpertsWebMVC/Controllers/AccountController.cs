@@ -222,11 +222,14 @@ namespace TravelExpertsMVC.Controllers
                 ModelState.AddModelError("Payment", $"You cannot make a payment larger than the balance.");
             }
 
+<<<<<<< Updated upstream
             if (model.Payment <= 0)
             {
                 ModelState.AddModelError("Payment", $"Payments must be greater than 0.");
             }
 
+=======
+>>>>>>> Stashed changes
             if (ModelState.IsValid)
             {
                 try
@@ -240,7 +243,11 @@ namespace TravelExpertsMVC.Controllers
                 }
                 catch (Exception e)
                 {
+<<<<<<< Updated upstream
                     TempData["Message"] = "There was a problem with payment. Please try again later.";
+=======
+                    TempData["Message"] = "There was a problem with payment. Please try again later." + e.Message;
+>>>>>>> Stashed changes
                     TempData["IsError"] = true;
                 }
                 return RedirectToAction("OrderHistory", "Account");
