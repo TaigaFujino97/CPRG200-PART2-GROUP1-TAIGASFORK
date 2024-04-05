@@ -185,6 +185,23 @@ namespace TravelExpertsMVC.Controllers
                 TempData["IsError"] = true;
                 return RedirectToAction("OrderHistory", "Account"); // redirect user to account order history page
             }
+            // if there are payments made to the booking
+            if (booking.TotalPaid > 0)
+            {
+                TempData["Message"] = "Cannot cancel booking with payments made. Please contact an agent.";
+                TempData["IsError"] = true;
+                return RedirectToAction("OrderHistory", "Account");// redirect user to account order history page
+            }
+
+            // Calculate the difference between booking date and today's date
+            TimeSpan difference = (TimeSpan)(DateTime.Today - booking.BookingDate);
+            // if the booking is past 15 days since the booking date
+            if (difference.Days > 15)
+            {
+                TempData["Message"] = "Booking is past the 15 day cancellation policy. Please contact an agent for more details.";
+                TempData["IsError"] = true;
+                return RedirectToAction("OrderHistory", "Account");// redirect user to account order history page
+            }
 
             bool success = BookingDB.DeleteBooking(db!, booking); // DeleteBooking returns true if booking is removed successfully.
 
@@ -208,6 +225,7 @@ namespace TravelExpertsMVC.Controllers
             Booking booking = BookingDB.FindBooking(db, bookid);
             model.PkgName = booking.Package.PkgName;
             model.BookingDate = booking.BookingDate;
+            model.BookingId = bookid;
             booking.TotalPaid ??= 0;
             model.Balance = (decimal)booking.Package.PkgBasePrice * (decimal)booking.TravelerCount - booking.TotalPaid;
             return View(model);
@@ -222,14 +240,12 @@ namespace TravelExpertsMVC.Controllers
                 ModelState.AddModelError("Payment", $"You cannot make a payment larger than the balance.");
             }
 
-<<<<<<< Updated upstream
+
             if (model.Payment <= 0)
             {
                 ModelState.AddModelError("Payment", $"Payments must be greater than 0.");
             }
 
-=======
->>>>>>> Stashed changes
             if (ModelState.IsValid)
             {
                 try
@@ -243,11 +259,9 @@ namespace TravelExpertsMVC.Controllers
                 }
                 catch (Exception e)
                 {
-<<<<<<< Updated upstream
-                    TempData["Message"] = "There was a problem with payment. Please try again later.";
-=======
+
                     TempData["Message"] = "There was a problem with payment. Please try again later." + e.Message;
->>>>>>> Stashed changes
+
                     TempData["IsError"] = true;
                 }
                 return RedirectToAction("OrderHistory", "Account");
