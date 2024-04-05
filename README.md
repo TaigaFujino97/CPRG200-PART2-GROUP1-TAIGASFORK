@@ -22,12 +22,16 @@ The CMS Windows application is developed using C# Windows Forms and provides a u
 - Web Application: ASP.NET Core MVC, C#, HTML/CSS, JavaScript, Entity Framework Core (EF Core), SQL Server
 - CMS Windows Application: C#, Windows Forms, SQL Server
 ## Demo Videos
-- Travel Experts Web Application
+
+### Travel Experts Web Application
 [![Demo Video](https://img.youtube.com/vi/rJrrUlSwNSg/0.jpg)](https://youtu.be/rJrrUlSwNSg)
-- Travel Experts CMS Application
+
+Click the image above to watch a demo video of the Travel Experts Web Application.
+
+### Travel Experts CMS Application
 [![Demo Video](https://img.youtube.com/vi/-ZxPv_dysPI/0.jpg)](https://youtu.be/-ZxPv_dysPI)
 
-Click the image above to watch a demo video of the Travel Experts applications.
+Click the image above to watch a demo video of the Travel Experts CMS Application.
 
 ## Getting Started
 
